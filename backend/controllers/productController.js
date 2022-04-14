@@ -1,4 +1,5 @@
 const { asyncHandler } = require("../middleware/errorMiddleware");
+const ApiFeatures = require("../utils/apiFeatures");
 const service = require("../utils/service");
 
 // Create Product -- Admin
@@ -9,7 +10,9 @@ exports.createProduct = asyncHandler(async (req, res) => {
 
 // Get All Products
 exports.getAllProducts = asyncHandler(async (req, res) => {
-  const products = await service.find();
+  const apiFeature = new ApiFeatures(service.find(), req.query).search();
+
+  const products = await apiFeature.query;
   res.status(200).json(products);
 });
 
