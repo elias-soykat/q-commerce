@@ -18,7 +18,7 @@ exports.getSingleProduct = asyncHandler(async (req, res) => {
   const product = await service.findById(req.params.id);
 
   if (!product) {
-    return res.status(404).json(`Product not found in ${req.params.id}`);
+    return res.status(404).json("That product is not available");
   }
   res.status(200).json(product);
 });
@@ -28,18 +28,18 @@ exports.updateProduct = asyncHandler(async (req, res) => {
   let product = await service.findById(req.params.id);
 
   if (!product) {
-    return res.status(404).json(`Product not found in ${req.params.id}`);
+    return res.status(404).json("That product is not available");
   }
   product = await service.findByIdAndUpdate(req.params.id, req.body);
   res.status(200).json(product);
 });
 
-// Delete Product
+// Delete Product -- Admin
 exports.deleteProduct = asyncHandler(async (req, res) => {
   const product = await service.findById(req.params.id);
 
   if (!product) {
-    return res.status(404).json(`Product not found in ${req.params.id}`);
+    return res.status(404).json("That product is not available");
   }
 
   await service.deleteOne({ _id: req.params.id });
