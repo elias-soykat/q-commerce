@@ -2,7 +2,7 @@ const Product = require("../models/productModel");
 
 exports.create = async (body) => {
   try {
-    return await Product.create(req.body);
+    return await Product.create(body);
   } catch (err) {
     throw new Error(err);
   }
