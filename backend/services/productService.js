@@ -8,9 +8,9 @@ exports.create = async (body) => {
   }
 };
 
-exports.find = async () => {
+exports.find = () => {
   try {
-    return await Product.find();
+    return Product.find();
   } catch (err) {
     throw new Error(err);
   }
@@ -37,6 +37,14 @@ exports.findByIdAndUpdate = async (id, body) => {
 exports.deleteOne = async (id) => {
   try {
     return await Product.deleteOne(id);
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+exports.countDocuments = async () => {
+  try {
+    return await Product.countDocuments();
   } catch (err) {
     throw new Error(err);
   }
