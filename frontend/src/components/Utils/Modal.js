@@ -1,36 +1,37 @@
-import React from "react";
-import Rating from "react-rating";
-import { Star, Unfilled } from "../../assets/svg";
+import React, { useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 
-export default function Modal({ setIsOpen, ratings = 3 }) {
-  return (
-    <div
-      onClick={() => setIsOpen(false)}
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-      className={`fixed modal inset-0 z-40 flex items-center justify-center`}
-    >
-      <div className="bg-white py-8 px-4 sm:px-8 rounded">
-        <textarea
-          cols="30"
-          rows="2"
-          placeholder="Enter Your Review"
-          className="block border-2 border-gray-400 text-sm p-2"
-        ></textarea>
+const Modal = ({ onClose }) => {
+  const ref = useRef();
 
-        <div className="flex items-center">
-          <Rating
-            emptySymbol={<Unfilled />}
-            fullSymbol={<Star />}
-            initialRating={ratings}
-            fractions={2}
-            className="my-6"
-          />
-          <span className="pl-4">{1}</span>
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener("click", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("click", checkIfClickedOutside);
+    };
+  }, [onClose]);
+
+  return ReactDOM.createPortal(
+    <div className="modal">
+      <div className="modal-content" ref={ref}>
+        <div className="modal-title">Modal Title</div>
+        <div className="modal-body">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
+          sint ab ex odio pariatur et eius? Nam, quod eum adipisci earum nisi
+          tempora, nesciunt esse voluptate illo, maxime consectetur harum!
         </div>
-        <button className="block bg-gray-600 px-6 py-1 text-white text-sm rounded">
-          Submit
-        </button>
+        <div className="modal-footer">
+          <button onClick={onClose}>Close</button>
+        </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal-root")
   );
-}
+};
+
+export default Modal;

@@ -30,10 +30,12 @@ export default function ProductReview({ pro }) {
           {[1, 2, 3].map((r) => (
             <blockquote
               key={r}
-              className="my-2 sm:my-2 border-b border-gray-300 py-4"
+              className="my-2 sm:my-2.5 border-b border-gray-300 py-4"
             >
-              <header className="sm:flex sm:items-center justify-between py-2">
-                <p className="font-medium">The best thing money can buy!</p>
+              <header className="sm:flex sm:items-center justify-between pt-1">
+                <p className="font-medium text-lg">
+                  The best thing money can buy!
+                </p>
                 <Rating
                   emptySymbol={<Unfilled />}
                   fullSymbol={<Star />}

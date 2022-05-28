@@ -1,45 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { EmailIcon, GoogleIcon, PasswordLock } from "../assets/svg";
-import { Input, Label } from "../components/Common";
-import { useNavigate } from "react-router-dom";
-import { loginAction } from "../redux/actions/userAction";
+import { EmailIcon, GoogleIcon, PasswordLock } from "../../assets/svg";
+import { Input, Label } from "../Common";
+import { clearErrors, loginAction } from "../../redux/actions/userAction";
+import { Loading, MetaData } from "../../helper";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { isAuthenticated, loading, err } = useSelector((state) => state.user);
+  console.log(isAuthenticated);
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
 
-  const { user } = useSelector((state) => state);
-
-  console.log(user);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setLogin({
-      ...login,
-      [name]: value,
-    });
+    setLogin({ ...login, [name]: value });
   };
 
-  const submitHandler = (e) => {
+  const { email, password } = login;
+
+  const loginSubmitHandler = (e) => {
     e.preventDefault();
-    const { email, password } = login;
+
     dispatch(loginAction(email, password));
   };
 
   useEffect(() => {
-    if (user?.user) {
+    if (err) {
+      toast.error(err.message || err);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
       navigate("/account");
     }
-  }, [navigate, user?.user]);
+  }, [dispatch, err, isAuthenticated, navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <MetaData title="Login | Q - Commerce" />
+      {loading && <Loading />}
       <div className="w-full max-w-lg flex flex-col shadow-md px-6 md:px-12 lg:px-14 py-8 md:py-12 lg:py-14 rounded-md bg-white">
         <button className="flex items-center justify-center my-8  rounded py-3 bg-gray-100">
           <GoogleIcon />
@@ -52,16 +58,18 @@ export default function Login() {
             </span>
           </div>
         </div>
-        <form className="mt-10" onSubmit={submitHandler}>
+        <form className="mt-10" onSubmit={loginSubmitHandler}>
           {/* Email  */}
 
           <div className="flex flex-col mb-7">
             <Label f="email">E-Mail Address</Label>
             <div className="relative">
               <Input
-                icon={<EmailIcon />}
+                type="email"
                 name="email"
-                plc="Email"
+                value={email}
+                plc="Enter Your Email"
+                icon={<EmailIcon />}
                 onChange={handleInputChange}
               />
             </div>
@@ -73,9 +81,11 @@ export default function Login() {
             <Label f="password">Password</Label>
             <div className="relative">
               <Input
-                icon={<PasswordLock />}
+                type="password"
                 name="password"
-                plc="Password"
+                value={password}
+                plc="Enter Your Password"
+                icon={<PasswordLock />}
                 onChange={handleInputChange}
               />
             </div>
@@ -83,9 +93,12 @@ export default function Login() {
 
           <div className="flex items-center -mt-4">
             <div className="flex ml-auto">
-              <a href="/" className="inline-flex text-xs sm:text-sm italic">
+              <Link
+                to="/password/forget"
+                className="inline-flex text-xs sm:text-sm italic pt-2"
+              >
                 Forgot Your Password ?
-              </a>
+              </Link>
             </div>
           </div>
 

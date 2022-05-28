@@ -13,6 +13,8 @@ const productsState = {
   total: 0,
   loading: false,
 };
+
+// All Products
 export function productsReducer(state = productsState, action) {
   switch (action.type) {
     case ALL_PRODUCT_REQUEST:
@@ -35,6 +37,7 @@ export function productsReducer(state = productsState, action) {
   }
 }
 
+// Single Product Details
 export function productDetailsReducer(state = { product: {} }, action) {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:

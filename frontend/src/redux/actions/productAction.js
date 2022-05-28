@@ -21,15 +21,9 @@ export const getProducts =
 
       const { data } = await axios.get(getLink);
 
-      dispatch({
-        type: ALL_PRODUCT_SUCCESS,
-        payload: data,
-      });
+      dispatch({ type: ALL_PRODUCT_SUCCESS, payload: data });
     } catch (err) {
-      dispatch({
-        type: ALL_PRODUCT_FAIL,
-        payload: err.message,
-      });
+      dispatch({ type: ALL_PRODUCT_FAIL, payload: err.response.data });
     }
   };
 
@@ -39,14 +33,8 @@ export const getProductDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(`/api/v1/product/${id}`);
 
-    dispatch({
-      type: PRODUCT_DETAILS_SUCCESS,
-      payload: data,
-    });
+    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (err) {
-    dispatch({
-      type: PRODUCT_DETAILS_FAIL,
-      payload: err.message,
-    });
+    dispatch({ type: PRODUCT_DETAILS_FAIL, payload: err.response.data });
   }
 };

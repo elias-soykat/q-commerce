@@ -1,5 +1,5 @@
 export const NavHamburger = ({ w = "28" }) => (
-  <svg viewBox="0 0 24 24" width={w}>
+  <svg className="cursor-pointer" viewBox="0 0 24 24" width={w}>
     <path
       fillRule="evenodd"
       d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
@@ -10,6 +10,7 @@ export const NavHamburger = ({ w = "28" }) => (
 export const CloseNavBar = ({ w = "22" }) => (
   <svg
     width={w}
+    className="cursor-pointer"
     version="1.1"
     viewBox="0 0 14 14"
     xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +36,7 @@ export const CloseNavBar = ({ w = "22" }) => (
 );
 
 export const SearchIcon = () => (
-  <svg width="24" viewBox="0 0 24 24" fill="none" className="text-gray-400">
+  <svg width="23" viewBox="0 0 24 24" fill="none" className="text-gray-400">
     <path
       d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
       stroke="currentColor"
@@ -317,8 +318,9 @@ export const CartIcon = () => (
 
 export const ProductCartIcon = () => (
   <svg
+    width="21"
     xmlns="http://www.w3.org/2000/svg"
-    className="w-5 h-5 mx-1"
+    className="mx-1"
     viewBox="0 0 20 20"
     fill="currentColor"
   >

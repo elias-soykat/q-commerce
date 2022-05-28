@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Rating from "react-rating";
-
 import {
   MinusIcon,
   PlusIcon,
@@ -8,11 +7,14 @@ import {
   Star,
   Unfilled,
 } from "../../assets/svg";
-import { Button } from "../Common";
-import Modal from "../Utils/Modal";
+import { useDispatch } from "react-redux";
+import { addItemsCart } from "../../redux/actions/cartAction";
+import toast from "react-hot-toast";
 
-export default function ProductDetails({ pro }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function ProductDetails({ pro, id }) {
+  const dispatch = useDispatch();
+
+  const [quantity, setQuantity] = useState(1);
 
   const {
     name,
@@ -25,8 +27,23 @@ export default function ProductDetails({ pro }) {
     _id,
   } = pro;
 
+  const addCartHandler = () => {
+    dispatch(addItemsCart(id, quantity));
+    toast.success("Item Added to Cart");
+  };
+
+  const increaseHandler = () => {
+    if (stock <= quantity) return;
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseHandler = () => {
+    if (1 >= quantity) return;
+    setQuantity(quantity - 1);
+  };
+
   return (
-    <section className="py-20 md:py-40 bg-gray-200">
+    <section className="pt-20 pb-16 md:py-40 bg-gray-200">
       <div className="max-w-screen-xl mx-auto px-4 md:px-12">
         <div className="grid items-start grid-cols-1 gap-8 md:gap-14 md:grid-cols-2">
           <div className="">
@@ -34,7 +51,7 @@ export default function ProductDetails({ pro }) {
               alt="product"
               className="object-cover object-center rounded-lg"
               style={{ maxHeight: "450px", minHeight: "400px" }}
-              src={images[0].url}
+              src={images[0]?.url}
             />
           </div>
 
@@ -42,7 +59,7 @@ export default function ProductDetails({ pro }) {
             <div className="flex justify-between">
               <div className="max-w-[35ch]">
                 <h1 className="text-2xl lg:text-3xl font-medium mb-1">
-                  Product{name}
+                  {name}
                 </h1>
                 <small>#{_id}</small>
               </div>
@@ -57,9 +74,9 @@ export default function ProductDetails({ pro }) {
             </p>
 
             {/* Submit review  */}
-            {isOpen && <Modal setIsOpen={setIsOpen} />}
+            {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
 
-            <form className="mt-6">
+            <div className="mt-6">
               <div className="flex items-center justify-between flex-wrap">
                 <div className="flex items-center">
                   <Rating
@@ -73,7 +90,6 @@ export default function ProductDetails({ pro }) {
                   <span className="text-sm ml-2">({numOfReviews} Reviews)</span>
                 </div>
                 <button
-                  onClick={() => setIsOpen(true)}
                   type="button"
                   className="bg-gray-600 text-white text-xs sm:text-sm px-4 py-2 rounded"
                 >
@@ -93,31 +109,33 @@ export default function ProductDetails({ pro }) {
               </div>
 
               <div>
-                <p>Available : {stock > 0 ? `${stock} pc` : `${stock} pcs`}</p>
+                <p>Available : {stock > 0 ? `${stock} pcs` : `${stock} pc`}</p>
               </div>
-
-              <div className="flex mt-10">
+              <div className="flex mt-8">
                 <div className="flex items-center mr-6">
-                  <span className="cursor-pointer">
+                  <button onClick={decreaseHandler} type="button">
                     <MinusIcon />
-                  </span>
+                  </button>
                   <input
                     className="mx-2 text-center w-8 border border-gray-400"
                     type="text"
                     disabled
-                    value="1"
+                    value={quantity}
                   />
-                  <span className="cursor-pointer">
+                  <button onClick={increaseHandler} type="button">
                     <PlusIcon />
-                  </span>
+                  </button>
                 </div>
-
-                <Button to="/cart" size="flex px-8 sm:px-10 py-3 ml-2 sm:ml-3">
+                <button
+                  onClick={addCartHandler}
+                  type="button"
+                  className="flex items-center justify-between px-6 py-2.5 text-sm font-bold duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+                >
                   <ProductCartIcon />
                   <span className="ml-2">Add to cart</span>
-                </Button>
+                </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

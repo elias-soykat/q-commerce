@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CartIcon,
   CloseNavBar,
@@ -7,28 +7,16 @@ import {
   SearchIcon,
 } from "../../assets/svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-import { Loading } from "../../helper";
 import { DropDown } from "../Utils";
+import { useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function NavBar() {
   const [toggle, setToggle] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const navigate = useNavigate();
 
-  const { productsList, productDetails, user } = useSelector((state) => state);
-
-  const errCheck = productsList.err || productDetails.err;
-
-  errCheck &&
-    toast.error(errCheck, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      draggable: false,
-    });
+  const { productsList, user, cart } = useSelector((state) => state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,10 +30,19 @@ export default function NavBar() {
       navigate("/products");
     }
   };
+
+  let errStatus = productsList.err;
+
+  useEffect(() => {
+    if (errStatus) {
+      toast.error(errStatus.message || errStatus);
+    }
+  }, [errStatus]);
+
   return (
     <>
-      <nav className="backdrop-blur-sm bg-white/90 shadow z-50 fixed w-full top-0">
-        {user?.loading && <Loading />}
+      <Toaster />
+      <nav className="backdrop-blur-sm text bg-white/90 shadow z-50 fixed w-full top-0">
         <div className="container px-4 py-4">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center">
             <div className="flex items-center justify-between">
@@ -61,8 +58,8 @@ export default function NavBar() {
                   <form className="flex items-center border border-gray-400 bg-white pr-4 rounded">
                     <input
                       type="text"
-                      className="w-full py-2 px-4 text-gray-700 bg-white rounded-md focus:outline-none"
-                      placeholder="Search"
+                      className="w-full py-2 px-5 text-gray-700 bg-white text-sm rounded-md focus:outline-none"
+                      placeholder="Search.."
                       name="search"
                       onChange={(e) => setSearchKeyword(e.target.value)}
                       value={searchKeyword}
@@ -93,31 +90,51 @@ export default function NavBar() {
                   Home
                 </NavLink>
                 <NavLink
+                  to="/password/update"
+                  className="my-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
+                >
+                  Update Password
+                </NavLink>
+                <NavLink
                   to="/products"
                   className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
                 >
                   Products
                 </NavLink>
                 <NavLink
-                  to="/cart"
+                  to="/password/reset/token"
                   className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
                 >
-                  Cart
+                  Reset
                 </NavLink>
-                {user?.user && user ? (
-                  <DropDown user={user} />
+                <NavLink
+                  to="/password/forget"
+                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
+                >
+                  Forget password
+                </NavLink>
+                <NavLink
+                  to="auth/login"
+                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
+                >
+                  Login
+                </NavLink>
+                {user.isAuthenticated ? (
+                  <DropDown {...user} />
                 ) : (
                   <NavLink
                     to="auth/login"
-                    className="mb-5 text-sm duration-300 md:mr-12  md:my-0 px-6 py-2 rounded font-medium text-white bg-gray-900 hover:bg-gray-600"
+                    className="mb-5 md:mr-12 md:my-0  text-sm duration-300 px-10 py-2.5 rounded font-medium text-white bg-gray-900 hover:bg-gray-600"
                   >
                     Login
                   </NavLink>
                 )}
               </div>
-
               <div className="flex items-center py-2 -mx-1 md:mx-0">
-                <Link to="/cart">
+                <Link to="/cart" className="relative">
+                  <span className="absolute left-4 bottom-3 bg-black text-white px-1.5 py-0.5 text-xs rounded-full">
+                    {cart.cartItems.length}
+                  </span>
                   <CartIcon />
                 </Link>
                 <Link to="/auth/login" className="ml-7">
@@ -142,7 +159,6 @@ export default function NavBar() {
           </div>
         </div>
       </nav>
-      {errCheck && <ToastContainer limit={1} />}
     </>
   );
 }

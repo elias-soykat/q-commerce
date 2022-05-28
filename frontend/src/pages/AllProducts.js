@@ -5,13 +5,13 @@ import { useParams } from "react-router-dom";
 import { CloseNavBar, NavHamburger, Star, Unfilled } from "../assets/svg";
 import { Container } from "../components/Common";
 import { Product } from "../components/Product";
-import { Loading, SkeletonLoad } from "../helper";
+import { Loading, MetaData, SkeletonLoad } from "../helper";
 import { categoryList, ratingList } from "../helper/helperObj";
 import { getProducts } from "../redux/actions/productAction";
 import noProduct from "../assets/no-product.png";
 
 let skeleton = [0, 1, 2, 3, 4, 5];
-export default function Products() {
+export default function AllProducts() {
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
@@ -20,6 +20,7 @@ export default function Products() {
   const [category, setCategory] = useState("");
 
   const { keyword } = useParams();
+
   const { products, loading, pages, total } = useSelector(
     (state) => state.productsList
   );
@@ -42,6 +43,7 @@ export default function Products() {
 
   return (
     <Container bg="bg-white">
+      <MetaData title="Products | Q - Commerce" />
       {loading && <Loading />}
       <div className="my-16 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
         <div className="lg:sticky lg:top-36">
@@ -52,8 +54,8 @@ export default function Products() {
             >
               <span className="text-sm font-medium">Toggle Filters</span>
 
-              {!toggle && <CloseNavBar w="17" />}
-              {toggle && <NavHamburger w="20" />}
+              {!toggle && <CloseNavBar w="18" />}
+              {toggle && <NavHamburger w="22" />}
             </div>
 
             <form
@@ -195,8 +197,8 @@ export default function Products() {
                 onClick={() => setPageNumber(btn + 1)}
                 className={`${
                   btn + 1 === pageNumber &&
-                  "bg-gray-600 text-white hover:bg-gray-700"
-                } bg-white text-gray-600 py-1.5 sm:py-2 px-4 sm:px-5 border border-gray-600 hover:bg-gray-200`}
+                  "bg-gray-500 text-white hover:bg-gray-700"
+                } bg-white text-gray-900 py-1.5 sm:py-2 px-4 sm:px-5 border border-gray-600 hover:bg-gray-200`}
               >
                 {btn + 1}
               </button>

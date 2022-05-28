@@ -4,38 +4,36 @@ const { asyncHandler } = require("../middleware/errorMiddleware");
 const service = require("../services/userService");
 const sendEmail = require("../utils/sendEmail");
 const sendToken = require("../utils/sendToken");
+const User = require("../models/userModel");
 
 // Register a User
 exports.registerUser = asyncHandler(async (req, res) => {
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  const { name, email, password, avatar } = await req.body;
+
+  const myCloud = await cloudinary.v2.uploader.upload(avatar, {
     folder: "avatars",
     width: 150,
     crop: "scale",
   });
 
-  const { name, email, password } = req.body;
-
-  if (!name || !email || !password) {
-    return res.status(400).json("Please enter the required field");
+  try {
+    const newUser = await User.create({
+      name,
+      email,
+      password,
+      avatar: { public_id: myCloud.public_id, url: myCloud.secure_url },
+    });
+    sendToken(newUser, 201, res);
+  } catch (err) {
+    if (err.code === 11000) {
+      throw new Error("This user is already exists in our system");
+    }
   }
-
-  const user = await service.create({
-    name,
-    email,
-    password,
-    avatar: { public_id: myCloud.public_id, url: myCloud.secure_url },
-  });
-
-  sendToken(user, 201, res);
 });
 
 // Login a User
 exports.loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json("Please enter email & password");
-  }
 
   const user = await service.findOne({ email });
 
@@ -77,7 +75,7 @@ exports.forgetPassword = asyncHandler(async (req, res) => {
 
   const resetPasswordUrl = `${req.protocol}://${req.get(
     "host"
-  )}/api/v1/password/reset/${resetPassword}`;
+  )}/password/reset/${resetPassword}`;
 
   const message = `Hello, \n\n Follow this link to reset your Q-Commerce password for your ${user.email} account. \n\n ${resetPasswordUrl} \n\nIf you didn’t ask to reset your password, you can ignore this email.\n\nThanks. \n\n Your Q-Commerce Team`;
 
@@ -142,7 +140,7 @@ exports.getUserDetails = asyncHandler(async (req, res) => {
 exports.updatePassword = asyncHandler(async (req, res) => {
   const user = await service.findById(req.user.id, "+");
 
-  const isPasswordMatched = await user.comparePassword(req.body.password);
+  const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
     return res.status(400).json("Old password is incorrect!");
@@ -166,7 +164,24 @@ exports.updateUserProfile = asyncHandler(async (req, res) => {
     email: req.body.email,
   };
 
-  // We will add cloudberry latter
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.user.id);
+
+    const imageId = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(imageId);
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+
+    newUserData.avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
+
   const user = await service.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
   });

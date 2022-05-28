@@ -1,10 +1,8 @@
 import Home from "./Home";
-import Products from "./Products";
+import AllProducts from "./AllProducts";
 import ProductSingle from "./ProductSingle";
-import Cart from "./Cart";
-import Login from "./Login";
-import Register from "./Register";
 import Auth from "./Auth";
 import Account from "./Account";
+import Cart from "./Cart";
 
-export { Home, Products, ProductSingle, Cart, Login, Register, Auth, Account };
+export { Home, AllProducts, ProductSingle, Auth, Account, Cart };

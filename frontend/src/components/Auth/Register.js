@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { EmailIcon, GoogleIcon, NameIcon, PasswordLock } from "../assets/svg";
-import { Input, Label } from "../components/Common";
-import { Loading } from "../helper";
-import { registerAction } from "../redux/actions/userAction";
+import {
+  EmailIcon,
+  GoogleIcon,
+  NameIcon,
+  PasswordLock,
+} from "../../assets/svg";
+import { Input, Label } from "../Common";
+import { Loading, MetaData } from "../../helper";
+import { registerAction } from "../../redux/actions/userAction";
+import simpleAvatar from "../../assets/avatar.png";
+import toast from "react-hot-toast";
 
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [avatar, setAvatar] = useState(
-    "https://img.icons8.com/ios/80/000000/user-male-circle.png"
-  );
-
   const [register, setRegister] = useState({
     name: "",
     email: "",
     password: "",
+    avatar: simpleAvatar,
   });
 
   const handleInputChange = (e) => {
@@ -27,19 +31,18 @@ export default function Register() {
 
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setAvatar(reader.result);
+          setRegister((v) => ({ ...v, avatar: reader.result }));
         }
       };
-
       reader.readAsDataURL(files[0]);
     } else {
-      setRegister({ ...register, [name]: value });
+      setRegister((prevState) => ({ ...prevState, [name]: value }));
     }
   };
 
-  const { name, email, password } = register;
+  const { name, email, password, avatar } = register;
 
-  const submitHandler = (e) => {
+  const registerSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -52,16 +55,20 @@ export default function Register() {
     dispatch(registerAction(myForm));
   };
 
-  const { isAuthenticated, loading } = useSelector((state) => state.user);
+  const { isAuthenticated, loading, err } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      return navigate("/account");
+    if (err) {
+      toast.error(err.message || err);
     }
-  }, [isAuthenticated, navigate]);
+    if (isAuthenticated) {
+      navigate("/account");
+    }
+  }, [err, isAuthenticated, navigate]);
 
   return (
     <div className="min-h-screen flex mt-16 md:mt-20 xl:mt-10 2xl:mt-0 items-center justify-center bg-gray-100">
+      <MetaData title="Register | Q - Commerce" />
       {loading && <Loading />}
       <div className="w-full max-w-lg flex flex-col shadow-md px-6 md:px-12 lg:px-14 py-6 md:py-10 lg:py-12 rounded-md bg-white">
         <button className="flex items-center justify-center mb-2  rounded py-3 bg-gray-100">
@@ -75,28 +82,32 @@ export default function Register() {
             </span>
           </div>
         </div>
-        <form className="mt-8" onSubmit={submitHandler}>
-          {/* Email  */}
-
+        <form className="mt-8" onSubmit={registerSubmitHandler}>
+          {/* Name  */}
           <div className="flex flex-col mb-5">
             <Label f="name">Name</Label>
             <div className="relative">
               <Input
-                icon={<NameIcon />}
+                type="text"
                 name="name"
-                plc="Your Name"
+                value={name}
+                plc="Enter Your Name"
+                icon={<NameIcon />}
                 onChange={handleInputChange}
               />
             </div>
           </div>
 
+          {/* Email  */}
           <div className="flex flex-col mb-5">
             <Label f="email">E-Mail Address</Label>
             <div className="relative">
               <Input
-                icon={<EmailIcon />}
+                type="email"
                 name="email"
-                plc="Your Email"
+                value={email}
+                plc="Enter Your Email"
+                icon={<EmailIcon />}
                 onChange={handleInputChange}
               />
             </div>
@@ -108,9 +119,11 @@ export default function Register() {
             <Label f="password">Password</Label>
             <div className="relative">
               <Input
-                icon={<PasswordLock />}
+                type="password"
                 name="password"
-                plc="Your Password"
+                value={password}
+                plc="Enter Your Password"
+                icon={<PasswordLock />}
                 onChange={handleInputChange}
               />
             </div>
@@ -119,33 +132,37 @@ export default function Register() {
           {/* File  */}
 
           <div className="flex flex-col mb-5">
-            <Label f="password">Upload Avatar</Label>
+            <Label f="avatar">Upload Avatar</Label>
             <div className="flex justify-between mt-1">
               <img width="11%" src={avatar} alt="user" />
               <div className="relative duration-500 hover:bg-gray-100 rounded-lg">
-                <Input
-                  name="file"
-                  plc="Your Password"
+                <input
+                  type="file"
                   onChange={handleInputChange}
+                  name="avatar"
+                  accept="image/*"
+                  required
+                  className="text-sm placeholder:italic placeholder-gray-500 pl-11 rounded-lg w-full py-2 focus:outline-none focus:border-gray-600"
+                  placeholder="Your File"
                 />
               </div>
             </div>
           </div>
 
           <div className="flex items-center justify-end">
-            <a
-              href="/"
-              className="inline-flex text-xs sm:text-sm italic border-b"
+            <Link
+              to="/password/forget"
+              className="inline-flex text-xs sm:text-sm italic"
             >
               Forgot Your Password ?
-            </a>
+            </Link>
           </div>
 
           <div className="my-6">
             <input
               type="submit"
               value="Register"
-              className="cursor-not-allowed w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="cursor-pointer w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
             />
           </div>
         </form>
