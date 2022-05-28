@@ -39,6 +39,8 @@ export default function NavBar() {
     }
   }, [errStatus]);
 
+  const isCartLength = cart?.cartItems.length;
+
   return (
     <>
       <Toaster />
@@ -130,11 +132,13 @@ export default function NavBar() {
                   </NavLink>
                 )}
               </div>
-              <div className="flex items-center py-2 -mx-1 md:mx-0">
+              <div className="flex items-center justify-center py-2 -mx-1 md:mx-0">
                 <Link to="/cart" className="relative">
-                  <span className="absolute left-4 bottom-3 bg-black text-white px-1.5 py-0.5 text-xs rounded-full">
-                    {cart.cartItems.length}
-                  </span>
+                  {isCartLength > 0 && (
+                    <span className="absolute left-4 bottom-3 bg-black text-white px-1.5 py-0.5 text-xs rounded-full">
+                      {isCartLength}
+                    </span>
+                  )}
                   <CartIcon />
                 </Link>
                 <Link to="/auth/login" className="ml-7">

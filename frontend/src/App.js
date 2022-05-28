@@ -13,6 +13,7 @@ import {
 } from "./components/Auth";
 import { ScrollTop } from "./helper";
 import { ProductSingle, Home, AllProducts, Auth, Account, Cart } from "./pages";
+import { Shipping } from "./components/Cart";
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/user/update" index element={<UpdateProfile />} />
           <Route path="/password/update" element={<UpdatePassword />} />
+          <Route path="/shipping" element={<Shipping />} />
           <Route path="/blogs" element={<MyBlog />} />
         </Route>
 

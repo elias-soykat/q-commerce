@@ -41,9 +41,11 @@ export default function AllProducts() {
     }
   }, [products, sort]);
 
+  const title = keyword ? `Search for ${keyword}` : "All Products";
+
   return (
     <Container bg="bg-white">
-      <MetaData title="Products | Q - Commerce" />
+      <MetaData title={`${title} | Q - Commerce`} />
       {loading && <Loading />}
       <div className="my-16 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
         <div className="lg:sticky lg:top-36">

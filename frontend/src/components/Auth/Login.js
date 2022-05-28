@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailIcon, GoogleIcon, PasswordLock } from "../../assets/svg";
 import { Input, Label } from "../Common";
@@ -10,9 +10,9 @@ import toast from "react-hot-toast";
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
   const { isAuthenticated, loading, err } = useSelector((state) => state.user);
-  console.log(isAuthenticated);
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -31,6 +31,9 @@ export default function Login() {
     dispatch(loginAction(email, password));
   };
 
+  const search = location.search;
+  const redirect = search ? `/${search.split("=")[1]}` : "/account";
+
   useEffect(() => {
     if (err) {
       toast.error(err.message || err);
@@ -38,9 +41,9 @@ export default function Login() {
     }
 
     if (isAuthenticated) {
-      navigate("/account");
+      navigate(redirect);
     }
-  }, [dispatch, err, isAuthenticated, navigate]);
+  }, [dispatch, err, isAuthenticated, navigate, redirect]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
