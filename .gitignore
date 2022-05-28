@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 
-/vscode
+/.vscode
 /backend/config/.env
 /frontend/node_modules
