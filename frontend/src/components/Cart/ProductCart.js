@@ -18,7 +18,7 @@ export default function ProductCart(prop) {
   };
 
   return (
-    <div className="flex items-center justify-between border-b border-gray-300 ml-4 sm:ml-0 pt-8 pb-6">
+    <div className="flex items-center justify-between border-b border-gray-300 mx-4 pt-8 pb-6">
       {/* single product cart  */}
       <div className="flex flex-wrap w-2/5">
         <div className="w-24 py-1.5 rounded-sm border border-gray-300">
@@ -35,6 +35,7 @@ export default function ProductCart(prop) {
           </div>
         </div>
       </div>
+
       <div className="flex justify-center items-center w-1/5">
         <div className="flex items-center mr-6 border-gray-800">
           <button onClick={() => decreaseHandler(product, quantity)}>

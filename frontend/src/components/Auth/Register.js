@@ -162,7 +162,7 @@ export default function Register() {
             <input
               type="submit"
               value="Register"
-              className="cursor-pointer w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="cursor-pointer w-full py-3 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
             />
           </div>
         </form>

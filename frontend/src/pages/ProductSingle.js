@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { ProductDetails, ProductReview } from "../components/Product";
-import { getProductDetails } from ".././redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { getProductDetails } from ".././redux/actions/productAction";
+import { ProductDetails, ProductReview } from "../components/Product";
 import { Loading, MetaData, ProductSkeleton } from "../helper";
 
 export default function ProductSingle() {

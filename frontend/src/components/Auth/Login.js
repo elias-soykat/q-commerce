@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { EmailIcon, GoogleIcon, PasswordLock } from "../../assets/svg";
-import { Input, Label } from "../Common";
-import { clearErrors, loginAction } from "../../redux/actions/userAction";
-import { Loading, MetaData } from "../../helper";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { EmailIcon, GoogleIcon, PasswordLock } from "../../assets/svg";
+import { Loading, MetaData } from "../../helper";
+import { clearErrors, loginAction } from "../../redux/actions/userAction";
+import { Input, Label } from "../Common";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -109,7 +109,7 @@ export default function Login() {
             <input
               type="submit"
               value="Login"
-              className="cursor-pointer w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="cursor-pointer w-full py-3 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
             />
           </div>
         </form>

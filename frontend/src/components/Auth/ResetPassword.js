@@ -96,8 +96,8 @@ export default function ResetPassword() {
           <div className="my-6">
             <input
               type="submit"
-              value="Reset Password"
-              className="cursor-pointer w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              value="RESET PASSWORD"
+              className="cursor-pointer w-full py-4 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
             />
           </div>
         </form>

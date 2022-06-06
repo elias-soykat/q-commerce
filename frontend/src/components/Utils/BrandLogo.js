@@ -70,7 +70,7 @@ export default function BrandLogo() {
         </div>
       </div>
 
-      <hr className="border-gray-300 my-12" />
+      <hr className="border-gray-300 my-10 pt-10" />
 
       <div className="my-2 md:my-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
         <div className="flex items-center justify-center col-span-1 md:col-span-2 lg:col-span-1">

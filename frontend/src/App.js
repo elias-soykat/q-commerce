@@ -1,7 +1,8 @@
-import React from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Footer } from "./components/Common";
-import { NavBar } from "./components/Header";
 import {
   ForgetPassword,
   Login,
@@ -11,25 +12,28 @@ import {
   UpdatePassword,
   UpdateProfile,
 } from "./components/Auth";
+import { ConfirmOrder, Payment, Shipping } from "./components/Cart";
+import { Footer } from "./components/Common";
+import { NavBar } from "./components/Header";
 import { ScrollTop } from "./helper";
-import { ProductSingle, Home, AllProducts, Auth, Account, Cart } from "./pages";
-import { Shipping } from "./components/Cart";
+import { Account, AllProducts, Auth, Cart, Home, ProductSingle } from "./pages";
 
 export default function App() {
+  const [stripeKey, setStripeKey] = useState();
+
+  const getStripeApiKey = async () => {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setStripeKey(data.stripeApiKey);
+  };
+
+  useEffect(() => {
+    getStripeApiKey();
+  }, []);
+
   return (
     <ScrollTop>
       <NavBar />
       <Routes>
-        {/* Dashboard  */}
-        {/* <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute isAuthenticated={isAuthenticated} adminRoute={true}>
-              <h2 className="text-2xl">Dashboard Page</h2>
-            </PrivateRoute>
-          }
-        /> */}
-
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<AllProducts />}>
           <Route path=":keyword" element={<AllProducts />} />
@@ -48,10 +52,18 @@ export default function App() {
           <Route path="/user/update" index element={<UpdateProfile />} />
           <Route path="/password/update" element={<UpdatePassword />} />
           <Route path="/shipping" element={<Shipping />} />
-          <Route path="/blogs" element={<MyBlog />} />
+          <Route path="/order/confirm" element={<ConfirmOrder />} />
+          <Route
+            path="/process/payment"
+            element={
+              <Elements stripe={loadStripe(stripeKey)}>
+                <Payment />
+              </Elements>
+            }
+          />
         </Route>
 
-        {/* Authentication Route  */}
+        {/* auth route  */}
         <Route path="auth/*" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
@@ -61,5 +73,3 @@ export default function App() {
     </ScrollTop>
   );
 }
-
-const MyBlog = () => <div className="text-4xl p-24">My MyBlog...</div>;

@@ -43,7 +43,7 @@ export default function ProductDetails({ pro, id }) {
   };
 
   return (
-    <section className="pt-20 pb-16 md:py-40 bg-gray-200">
+    <section className="mt-28 sm:mt-40">
       <div className="max-w-screen-xl mx-auto px-4 md:px-12">
         <div className="grid items-start grid-cols-1 gap-8 md:gap-14 md:grid-cols-2">
           <div className="">

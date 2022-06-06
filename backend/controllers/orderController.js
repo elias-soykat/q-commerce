@@ -9,8 +9,7 @@ exports.createOrder = asyncHandler(async (req, res) => {
     orderItems,
     paymentInfo,
     itemsPrice,
-    taxPrice,
-    shippingPrice,
+    shippingCharge,
     totalPrice,
   } = req.body;
 
@@ -19,8 +18,7 @@ exports.createOrder = asyncHandler(async (req, res) => {
     orderItems,
     paymentInfo,
     itemsPrice,
-    taxPrice,
-    shippingPrice,
+    shippingCharge,
     totalPrice,
     paidAt: Date.now(),
     user: req.user._id,

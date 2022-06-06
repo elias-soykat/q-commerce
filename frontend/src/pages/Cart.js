@@ -31,13 +31,10 @@ export default function Cart() {
         </div>
       ) : (
         <>
-          <div className="pt-6 sm:pb-4 px-4 sm:px-0">
-            <h2>Home > Pages > Shops </h2>
-          </div>
           <div className="lg:flex py-4 sm:py-14">
             <div className="lg:w-3/4 py-6">
               {/* cart title  */}
-              <div className="flex justify-between ml-4 sm:ml-0">
+              <div className="flex justify-between mx-4">
                 <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
                   Product
                 </h3>
@@ -56,9 +53,7 @@ export default function Cart() {
             <div className="lg:w-1/4 px-6 md:px-8 py-2 md:py-6 flex flex-col justify-end lg:border-l border-gray-600">
               {cartItems.map(({ name, price, quantity, product }) => (
                 <div key={product} className="flex justify-between py-3">
-                  <p className="font-semibold text-sm">
-                    {name} &nbsp; &nbsp; x &nbsp; {quantity} &nbsp; =
-                  </p>
+                  <p className="font-semibold text-sm">{name}</p>
                   <p className="font-semibold text-sm">${price * quantity}</p>
                 </div>
               ))}

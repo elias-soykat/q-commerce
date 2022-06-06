@@ -390,7 +390,7 @@ export const TickMark = () => (
 
 export const PhoneIcon = () => (
   <svg
-    width="23"
+    width="22"
     version="1.1"
     viewBox="0 0 50 50"
     xmlns="http://www.w3.org/2000/svg"
@@ -400,8 +400,8 @@ export const PhoneIcon = () => (
       d="M30.217,35.252c0,0,4.049-2.318,5.109-2.875  c1.057-0.559,2.152-0.7,2.817-0.294c1.007,0.616,9.463,6.241,10.175,6.739c0.712,0.499,1.055,1.924,0.076,3.32  c-0.975,1.396-5.473,6.916-7.379,6.857c-1.909-0.062-9.846-0.236-24.813-15.207C1.238,18.826,1.061,10.887,1,8.978  C0.939,7.07,6.459,2.571,7.855,1.595c1.398-0.975,2.825-0.608,3.321,0.078c0.564,0.781,6.124,9.21,6.736,10.176  c0.419,0.66,0.265,1.761-0.294,2.819c-0.556,1.06-2.874,5.109-2.874,5.109s1.634,2.787,7.16,8.312  C27.431,33.615,30.217,35.252,30.217,35.252z"
       fill="none"
       stroke="#000000"
-      stroke-miterlimit="10"
-      stroke-width="2"
+      strokeMiterlimit="10"
+      strokeWidth="2"
     />
   </svg>
 );
@@ -422,7 +422,7 @@ export const HomeIcon = () => (
 
 export const PinCodeIcon = () => (
   <svg
-    enable-background="new 0 0 30 30"
+    enableBackground="new 0 0 30 30"
     version="1.1"
     viewBox="0 0 30 30"
     width="24"
@@ -437,7 +437,7 @@ export const PinCodeIcon = () => (
 
 export const CountryIcon = () => (
   <svg
-    enable-background="new 0 0 64 64"
+    enableBackground="new 0 0 64 64"
     viewBox="0 0 64 64"
     width="24"
     xmlns="http://www.w3.org/2000/svg"
@@ -454,7 +454,7 @@ export const CountryIcon = () => (
 export const PostCode = () => (
   <svg
     width="24"
-    enable-background="new 0 0 512 512"
+    enableBackground="new 0 0 512 512"
     version="1.1"
     viewBox="0 0 512 512"
     xmlns="http://www.w3.org/2000/svg"
@@ -469,6 +469,82 @@ export const PostCode = () => (
         <rect height="10" width="11.991" x="145.008" y="207.841" />
         <rect height="10" width="30.393" x="389.92" y="329.061" />
       </g>
+    </g>
+  </svg>
+);
+
+export const DetailsIcon = () => (
+  <svg
+    className="w-6 h-6 sm:w-5 sm:h-5 sm:ml-2"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"
+    />
+  </svg>
+);
+
+export const AddressIcon = () => (
+  <svg
+    className="w-6 h-6 sm:w-5 sm:h-5 sm:ml-2"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+  </svg>
+);
+
+export const PaymentIcon = () => (
+  <svg
+    className="w-6 h-6 sm:w-5 sm:h-5 sm:ml-2"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+    />
+  </svg>
+);
+
+export const CreditCard = () => (
+  <svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <path d="M79.4,71.1H20.6c-2.4,0-4.4-2-4.4-4.4V33.3c0-2.4,2-4.4,4.4-4.4h58.9c2.4,0,4.4,2,4.4,4.4v33.4   C83.8,69.1,81.9,71.1,79.4,71.1z M20.6,30.9c-1.3,0-2.4,1.1-2.4,2.4v33.4c0,1.3,1.1,2.4,2.4,2.4h58.9c1.3,0,2.4-1.1,2.4-2.4V33.3   c0-1.3-1.1-2.4-2.4-2.4H20.6z" />
+    </g>
+    <g>
+      <path d="M36,63c-1,0-1.9-0.2-2.7-0.6c-2.3-1.1-3.7-3.4-3.7-5.9c0-3.6,2.9-6.5,6.5-6.5c3.6,0,6.5,2.9,6.5,6.5c0,2.5-1.5,4.8-3.7,5.9   C37.8,62.8,36.9,63,36,63z M36,52.1c-2.5,0-4.5,2-4.5,4.5c0,1.7,1,3.3,2.6,4c1.2,0.6,2.6,0.6,3.8,0c1.6-0.7,2.6-2.3,2.6-4   C40.4,54.1,38.4,52.1,36,52.1z" />
+    </g>
+    <g>
+      <path d="M29.5,63c-1,0-1.9-0.2-2.7-0.6C24.5,61.3,23,59,23,56.5c0-3.6,2.9-6.5,6.5-6.5c3.6,0,6.5,2.9,6.5,6.5   c0,2.5-1.5,4.8-3.7,5.9C31.4,62.8,30.4,63,29.5,63z M29.5,52.1c-2.5,0-4.5,2-4.5,4.5c0,1.7,1,3.3,2.6,4c1.2,0.6,2.6,0.6,3.8,0   c1.6-0.7,2.6-2.3,2.6-4C33.9,54.1,31.9,52.1,29.5,52.1z" />
+    </g>
+    <g>
+      <path d="M75,46H55c-0.6,0-1-0.4-1-1s0.4-1,1-1h20c0.6,0,1,0.4,1,1S75.6,46,75,46z" />
+    </g>
+    <g>
+      <rect height="2" width="65.5" x="17.2" y="38.8" />
     </g>
   </svg>
 );

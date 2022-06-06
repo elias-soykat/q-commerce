@@ -57,7 +57,7 @@ export const ElegantDarkMode = () => (
 
 export const BrandFacebook = () => (
   <svg
-    className="h-12 text-gray-500 fill-current "
+    className="h-14 text-gray-500 fill-current "
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 266 100"
   >

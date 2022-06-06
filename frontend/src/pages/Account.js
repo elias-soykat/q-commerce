@@ -56,13 +56,13 @@ export default function Account() {
           <br />
           <Link
             to="/"
-            className="bg-slate-600 text-white py-2 px-4 rounded-md shadow-md mr-2"
+            className="bg-slate-600 text-white py-3 px-4 rounded-md shadow-md mr-2"
           >
             My Orders
           </Link>
           <Link
             to="/password/update"
-            className="bg-gray-700 text-white py-2 px-4 rounded-md shadow-md"
+            className="bg-gray-700 text-white py-3 px-4 rounded-md shadow-md"
           >
             Change Password
           </Link>

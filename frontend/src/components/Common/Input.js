@@ -12,7 +12,7 @@ export default function Input({ type, name, value, plc, icon, onChange }) {
         name={name}
         value={value}
         required
-        className="text-sm placeholder:italic placeholder-gray-500 pl-11 rounded-lg border border-gray-300 w-full py-2 focus:outline-none focus:border-gray-600"
+        className="text-sm placeholder:italic placeholder-gray-500 pl-11 rounded-lg border border-gray-300 w-full py-2 focus:outline-none focus:border-gray-600 transition-colors"
         placeholder={plc}
         id={name}
       />

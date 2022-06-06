@@ -114,8 +114,8 @@ export default function UpdatePassword() {
           <div className="my-6">
             <input
               type="submit"
-              value="Change Password"
-              className="cursor-pointer w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              value="CHANGE PASSWORD"
+              className="cursor-pointer w-full py-4 flex items-center justify-center font-bold text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
             />
           </div>
         </form>
