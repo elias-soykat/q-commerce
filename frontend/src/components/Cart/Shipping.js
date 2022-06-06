@@ -24,8 +24,8 @@ export default function Shipping() {
     phone: phone || "",
     address: address || "",
     post: post || "",
-    city: city || "",
-    country: country || "",
+    city: city || "Dhaka",
+    country: country || "BD",
   });
 
   const handleInputChange = (e) => {
@@ -111,6 +111,7 @@ export default function Shipping() {
                 name="city"
                 className="text-sm w-full pl-2 focus:border-gray-600 py-2.5 rounded-md bg-white  focus:outline-none"
                 id="city"
+                required
               >
                 <option value="Dhaka">Dhaka</option>
                 <option value="Barishal">Barishal</option>
@@ -129,6 +130,7 @@ export default function Shipping() {
                 name="country"
                 className="text-sm w-full pl-2 focus:border-gray-600 py-2.5 rounded-md bg-white  focus:outline-none"
                 id="country"
+                required
               >
                 <option value="BD">Bangladesh</option>
                 <option value="IN">India</option>

@@ -55,7 +55,7 @@ export default function ProductReview({ pro }) {
                 <img
                   className="w-8 sm:w-12"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbvHpEOo3fTsZQkp5Hfd93YrByM9P4F944GylcXSwZ7xzop2YZo6KH7lFdu1FsdBJ3E8g&usqp=CAU"
-                  alt=""
+                  alt="user"
                 />
                 <div className=" ml-5">
                   <p className="inline">John Doe</p>

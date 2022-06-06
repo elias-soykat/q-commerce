@@ -1,10 +1,4 @@
-import {
-  CardCvcElement,
-  CardExpiryElement,
-  CardNumberElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -61,7 +55,7 @@ export default function Payment() {
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
-          card: elements.getElement(CardNumberElement),
+          card: elements.getElement(CardElement),
           billing_details: {
             name: name.name,
             email: user.email,
@@ -85,8 +79,10 @@ export default function Payment() {
             status: result.paymentIntent.status,
           };
 
+          console.log(order);
+
           dispatch(createOrder(order));
-          navigate("/success");
+          navigate("/order/success");
         } else {
           toast.error("There's some issue while processing payment");
         }
@@ -127,11 +123,11 @@ export default function Payment() {
           </div>
 
           {/* Name on card  */}
-          <div className="mb-4">
+          <div className="mb-5">
             <label className="font-bold text-gray-500 text-sm ml-1">
               Name on card
             </label>
-            <div className="my-1">
+            <div className="my-3">
               <input
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 mb-1 border border-gray-300 focus:border-gray-400 rounded-md focus:outline-none transition-colors"
@@ -142,51 +138,20 @@ export default function Payment() {
           </div>
 
           {/* Card Number  */}
-          <div className="mb-4">
+          <div className="mb-5">
             <label className="font-bold text-gray-500 text-sm ml-1">
               Card number
             </label>
-            <div className="my-1">
-              <CardNumberElement
-                className="w-full px-3 py-3 mb-1 rounded-md focus:outline-none border border-gray-300 focus:border-gray-400 transition-colors"
+            <div className="my-3">
+              <CardElement
+                className="w-full px-3 py-3.5 mb-1 rounded-md focus:outline-none border border-gray-300 focus:border-gray-400 transition-colors"
                 placeholder="0000 0000 0000 0000"
                 type="text"
               />
             </div>
           </div>
 
-          {/* Expire date */}
-          <div className="mb-4 -mx-2 flex items-end">
-            <div className="px-2 w-1/2">
-              <label className="font-bold text-gray-500 text-sm ml-1 ">
-                Expiration date
-              </label>
-              <div className="my-1">
-                <CardExpiryElement
-                  className="w-full px-3 py-3 mb-1 rounded-md focus:outline-none border border-gray-300 focus:border-gray-400 transition-colors"
-                  placeholder="John Smith"
-                  type="date"
-                />
-              </div>
-            </div>
-
-            {/* CVV  */}
-            <div className="px-2 w-1/2">
-              <label className="font-bold text-gray-500 text-sm mb-2 ml-1">
-                CVV
-              </label>
-              <div className="my-1">
-                <CardCvcElement
-                  min="0"
-                  className="w-full px-3 py-3 mb-1 rounded-md focus:outline-none border border-gray-300 focus:border-gray-400 transition-colors"
-                  placeholder="CVV"
-                  type="number"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10 mb-5">
+          <div className="mt-8 sm:mt-12 mb-5">
             <input
               type="submit"
               ref={payBtn}

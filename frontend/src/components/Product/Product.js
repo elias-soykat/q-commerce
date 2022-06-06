@@ -1,7 +1,7 @@
 import React from "react";
+import Rating from "react-rating";
 import { LoveIcon, ProductCartIcon, Star, Unfilled } from "../../assets/svg";
 import { Button } from "../Common";
-import Rating from "react-rating";
 
 export default function Product({ pro }) {
   const { name, price, ratings, numOfReviews, images, _id } = pro;
@@ -16,7 +16,7 @@ export default function Product({ pro }) {
           <LoveIcon />
         </button>
         <img
-          alt="Build Your Own Drone"
+          alt={name}
           className="duration-300 hover:scale-90 pt-4 object-cover object-top w-full h-56 lg:h-64 xl:h-72"
           src={images[0]?.url}
         />

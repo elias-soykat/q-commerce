@@ -12,7 +12,12 @@ import {
   UpdatePassword,
   UpdateProfile,
 } from "./components/Auth";
-import { ConfirmOrder, Payment, Shipping } from "./components/Cart";
+import {
+  ConfirmOrder,
+  OrderSuccess,
+  Payment,
+  Shipping,
+} from "./components/Cart";
 import { Footer } from "./components/Common";
 import { NavBar } from "./components/Header";
 import { ScrollTop } from "./helper";
@@ -53,6 +58,7 @@ export default function App() {
           <Route path="/password/update" element={<UpdatePassword />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/order/confirm" element={<ConfirmOrder />} />
+          <Route path="/order/success" element={<OrderSuccess />} />
           <Route
             path="/process/payment"
             element={

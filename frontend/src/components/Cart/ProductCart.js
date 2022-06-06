@@ -8,12 +8,12 @@ export default function ProductCart(prop) {
   const dispatch = useDispatch();
 
   const increaseHandler = (id, qty, prodStock) => {
-    if (prodStock <= qty) return;
+    if (prodStock <= qty) return alert("Order cannot exceed stock limit :(");
     dispatch(addItemsCart(id, qty + 1));
   };
 
   const decreaseHandler = (id, qty) => {
-    if (1 >= qty) return;
+    if (1 >= qty) return alert("Order at lest an item :(");
     dispatch(addItemsCart(id, qty - 1));
   };
 
@@ -22,7 +22,7 @@ export default function ProductCart(prop) {
       {/* single product cart  */}
       <div className="flex flex-wrap w-2/5">
         <div className="w-24 py-1.5 rounded-sm border border-gray-300">
-          <img className="h-24 rounded-md" src={image} alt="" />
+          <img className="h-24 rounded-md" src={image} alt="product" />
         </div>
         <div className="flex flex-col items-start pt-2 sm:pt-0 sm:ml-3 justify-end">
           <div className="font-bold">{name}</div>

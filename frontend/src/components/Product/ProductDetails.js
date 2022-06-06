@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import Rating from "react-rating";
+import { useDispatch } from "react-redux";
 import {
   MinusIcon,
   PlusIcon,
@@ -7,9 +9,7 @@ import {
   Star,
   Unfilled,
 } from "../../assets/svg";
-import { useDispatch } from "react-redux";
 import { addItemsCart } from "../../redux/actions/cartAction";
-import toast from "react-hot-toast";
 
 export default function ProductDetails({ pro, id }) {
   const dispatch = useDispatch();
@@ -33,12 +33,12 @@ export default function ProductDetails({ pro, id }) {
   };
 
   const increaseHandler = () => {
-    if (stock <= quantity) return;
+    if (stock <= quantity) return alert("Order cannot exceed stock limit :(");
     setQuantity(quantity + 1);
   };
 
   const decreaseHandler = () => {
-    if (1 >= quantity) return;
+    if (1 >= quantity) return alert("Order at lest an item :(");
     setQuantity(quantity - 1);
   };
 
