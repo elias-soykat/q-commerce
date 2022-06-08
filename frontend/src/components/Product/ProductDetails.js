@@ -10,6 +10,7 @@ import {
   Unfilled,
 } from "../../assets/svg";
 import { addItemsCart } from "../../redux/actions/cartAction";
+import Modal from "../Utils/Modal";
 
 export default function ProductDetails({ pro, id }) {
   const dispatch = useDispatch();
@@ -42,14 +43,17 @@ export default function ProductDetails({ pro, id }) {
     setQuantity(quantity - 1);
   };
 
+  const [toggle, setToggle] = useState("none");
+  const displayModalHandler = (status) => setToggle(status);
+
   return (
     <section className="mt-28 sm:mt-40">
-      <div className="max-w-screen-xl mx-auto px-4 md:px-12">
-        <div className="grid items-start grid-cols-1 gap-8 md:gap-14 md:grid-cols-2">
+      <div className="mx-auto max-w-screen-xl px-4 md:px-12">
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-14">
           <div className="">
             <img
               alt="product"
-              className="object-cover object-center rounded-lg"
+              className="rounded-lg object-cover object-center"
               style={{ maxHeight: "450px", minHeight: "400px" }}
               src={images[0]?.url}
             />
@@ -58,13 +62,13 @@ export default function ProductDetails({ pro, id }) {
           <div className="">
             <div className="flex justify-between">
               <div className="max-w-[35ch]">
-                <h1 className="text-2xl lg:text-3xl font-medium mb-1">
+                <h1 className="mb-1 text-2xl font-medium lg:text-3xl">
                   {name}
                 </h1>
                 <small>#{_id}</small>
               </div>
 
-              <b className="text-lg md:text-2xl font-bold">$ {price}</b>
+              <b className="text-lg font-bold md:text-2xl">$ {price}</b>
             </div>
 
             <p className="mt-4">
@@ -73,11 +77,38 @@ export default function ProductDetails({ pro, id }) {
               perferendis facilis eos adipisci earum!
             </p>
 
-            {/* Submit review  */}
-            {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
+            <Modal closeModal={displayModalHandler} openModal={toggle}>
+              <div className="flex w-full flex-col items-start justify-center rounded-md bg-white p-3">
+                <div className="flex items-start">
+                  <textarea
+                    className="border"
+                    name="review"
+                    id=""
+                    cols="30"
+                    rows="4"
+                  ></textarea>
+                  <p
+                    onClick={() => displayModalHandler("none")}
+                    className="cursor-pointer px-3 font-medium"
+                  >
+                    X
+                  </p>
+                </div>
+                <Rating
+                  emptySymbol={<Unfilled />}
+                  fullSymbol={<Star />}
+                  initialRating={ratings}
+                  fractions={2}
+                  className="my-3 text-sm"
+                />
 
+                <button className="rounded-mg my-1 flex justify-center rounded-md bg-gray-500 px-6 py-1 text-sm text-white">
+                  Submit
+                </button>
+              </div>
+            </Modal>
             <div className="mt-6">
-              <div className="flex items-center justify-between flex-wrap">
+              <div className="flex flex-wrap items-center justify-between">
                 <div className="flex items-center">
                   <Rating
                     emptySymbol={<Unfilled />}
@@ -87,17 +118,18 @@ export default function ProductDetails({ pro, id }) {
                     readonly={true}
                     className="text-sm"
                   />
-                  <span className="text-sm ml-2">({numOfReviews} Reviews)</span>
+                  <span className="ml-2 text-sm">({numOfReviews} Reviews)</span>
                 </div>
                 <button
+                  onClick={() => displayModalHandler("block")}
                   type="button"
-                  className="bg-gray-600 text-white text-xs sm:text-sm px-4 py-2 rounded"
+                  className="rounded bg-gray-600 px-4 py-2 text-xs text-white sm:text-sm"
                 >
                   Submit Review
                 </button>
               </div>
 
-              <div className="flex my-5">
+              <div className="my-5 flex">
                 <p>Status : </p>
                 <div className="ml-3">
                   {stock > 0 ? (
@@ -111,13 +143,13 @@ export default function ProductDetails({ pro, id }) {
               <div>
                 <p>Available : {stock > 0 ? `${stock} pcs` : `${stock} pc`}</p>
               </div>
-              <div className="flex mt-8">
-                <div className="flex items-center mr-6">
+              <div className="mt-8 flex">
+                <div className="mr-6 flex items-center">
                   <button onClick={decreaseHandler} type="button">
                     <MinusIcon />
                   </button>
                   <input
-                    className="mx-2 text-center w-8 border border-gray-400"
+                    className="mx-2 w-8 border border-gray-400 text-center"
                     type="text"
                     disabled
                     value={quantity}
@@ -129,7 +161,7 @@ export default function ProductDetails({ pro, id }) {
                 <button
                   onClick={addCartHandler}
                   type="button"
-                  className="flex items-center justify-between px-6 py-2.5 text-sm font-bold duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+                  className="flex items-center justify-between rounded-md bg-gray-900 px-6 py-2.5 text-sm font-bold text-white duration-500 hover:bg-gray-600"
                 >
                   <ProductCartIcon />
                   <span className="ml-2">Add to cart</span>

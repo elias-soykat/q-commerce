@@ -49,7 +49,7 @@ export const SearchIcon = () => (
 
 export const LoveIcon = () => (
   <svg
-    className="w-4 h-4"
+    className="h-4 w-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -66,7 +66,7 @@ export const LoveIcon = () => (
 
 export const BagIcon = () => (
   <svg
-    className="w-5 h-5 ml-1.5"
+    className="ml-1.5 h-5 w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -184,10 +184,10 @@ export const MinusIcon = () => (
   </svg>
 );
 
-export const RightArrow = () => (
+export const RightArrow = ({ border }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-5 h-5 ml-4"
+    className={`ml-4 h-5 w-5 ${border}`}
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
@@ -475,7 +475,7 @@ export const PostCode = () => (
 
 export const DetailsIcon = () => (
   <svg
-    className="w-6 h-6 sm:w-5 sm:h-5 sm:ml-2"
+    className="h-6 w-6 sm:ml-2 sm:h-5 sm:w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -492,7 +492,7 @@ export const DetailsIcon = () => (
 
 export const AddressIcon = () => (
   <svg
-    className="w-6 h-6 sm:w-5 sm:h-5 sm:ml-2"
+    className="h-6 w-6 sm:ml-2 sm:h-5 sm:w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -514,7 +514,7 @@ export const AddressIcon = () => (
 
 export const PaymentIcon = () => (
   <svg
-    className="w-6 h-6 sm:w-5 sm:h-5 sm:ml-2"
+    className="h-6 w-6 sm:ml-2 sm:h-5 sm:w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"

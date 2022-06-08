@@ -1,36 +1,30 @@
-import React, { useEffect, useRef } from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect } from "react";
 
-const Modal = ({ onClose }) => {
-  const ref = useRef();
-
+const Modal = ({ openModal, closeModal, children }) => {
   useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
-        onClose();
-      }
-    };
-    document.addEventListener("click", checkIfClickedOutside);
-    return () => {
-      document.removeEventListener("click", checkIfClickedOutside);
-    };
-  }, [onClose]);
+    const parentElement = document.getElementById("parent");
 
-  return ReactDOM.createPortal(
-    <div className="modal">
-      <div className="modal-content" ref={ref}>
-        <div className="modal-title">Modal Title</div>
-        <div className="modal-body">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-          sint ab ex odio pariatur et eius? Nam, quod eum adipisci earum nisi
-          tempora, nesciunt esse voluptate illo, maxime consectetur harum!
-        </div>
-        <div className="modal-footer">
-          <button onClick={onClose}>Close</button>
-        </div>
+    if (parentElement) {
+      parentElement.addEventListener("click", (e) => {
+        const topChild = document.getElementById("child");
+        if (topChild && !topChild.contains(e.target)) {
+          closeModal("none");
+        }
+      });
+    }
+  }, [closeModal]);
+
+  return openModal === "none" ? (
+    <> </>
+  ) : (
+    <div
+      id="parent"
+      className="fixed left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-[#7d7799] bg-opacity-60"
+    >
+      <div id="child" className="transition-opacity">
+        {children}
       </div>
-    </div>,
-    document.getElementById("modal-root")
+    </div>
   );
 };
 

@@ -79,8 +79,6 @@ export default function Payment() {
             status: result.paymentIntent.status,
           };
 
-          console.log(order);
-
           dispatch(createOrder(order));
           navigate("/order/success");
         } else {
@@ -108,29 +106,29 @@ export default function Payment() {
       <div className="min-w-screen flex items-center justify-center pb-24 pt-6 sm:pt-8">
         <form
           onSubmit={paymentSubmitHandler}
-          className="w-full mx-auto rounded-lg bg-white shadow-lg py-6 sm:py-10 px-6 sm:px-8 text-gray-700"
+          className="mx-auto w-full rounded-lg bg-white py-6 px-6 text-gray-700 shadow-lg sm:py-10 sm:px-8"
           style={{ maxWidth: "600px" }}
         >
-          <div className="w-full relative bottom-3 pb-8">
-            <div className="border bg-white p-2 rounded-full w-24 h-24 -mt-16 mx-auto flex justify-center items-center">
+          <div className="relative bottom-3 w-full pb-8">
+            <div className="mx-auto -mt-16 flex h-24 w-24 items-center justify-center rounded-full border bg-white p-2">
               <CreditCard />
             </div>
           </div>
           <div className="mb-10">
-            <h1 className="text-center font-bold text-xl uppercase">
+            <h1 className="text-center text-xl font-bold uppercase">
               Secure payment info
             </h1>
           </div>
 
           {/* Name on card  */}
           <div className="mb-5">
-            <label className="font-bold text-gray-500 text-sm ml-1">
+            <label className="ml-1 text-sm font-bold text-gray-500">
               Name on card
             </label>
             <div className="my-3">
               <input
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3 py-2 mb-1 border border-gray-300 focus:border-gray-400 rounded-md focus:outline-none transition-colors"
+                className="mb-1 w-full rounded-md border border-gray-300 px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none"
                 placeholder="John Smith"
                 type="text"
               />
@@ -139,24 +137,24 @@ export default function Payment() {
 
           {/* Card Number  */}
           <div className="mb-5">
-            <label className="font-bold text-gray-500 text-sm ml-1">
+            <label className="ml-1 text-sm font-bold text-gray-500">
               Card number
             </label>
             <div className="my-3">
               <CardElement
-                className="w-full px-3 py-3.5 mb-1 rounded-md focus:outline-none border border-gray-300 focus:border-gray-400 transition-colors"
+                className="mb-1 w-full rounded-md border border-gray-300 px-3 py-3.5 transition-colors focus:border-gray-400 focus:outline-none"
                 placeholder="0000 0000 0000 0000"
                 type="text"
               />
             </div>
           </div>
 
-          <div className="mt-8 sm:mt-12 mb-5">
+          <div className="mt-8 mb-5 sm:mt-12">
             <input
               type="submit"
               ref={payBtn}
               value={`Pay  -  $ ${orderInfo && orderInfo.totalPrice}`}
-              className="cursor-pointer w-full text-white bg-gray-800 hover:bg-gray-700 rounded-lg px-3 py-3.5 font-semibold flex items-center justify-center"
+              className="flex w-full cursor-pointer items-center justify-center rounded-lg bg-gray-800 px-3 py-3.5 font-semibold text-white hover:bg-gray-700"
             />
           </div>
         </form>

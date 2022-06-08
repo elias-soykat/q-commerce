@@ -33,8 +33,6 @@ export default function Shipping() {
     setShippingDetails((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  console.log(shippingDetails);
-
   const shippingSubmit = (e) => {
     e.preventDefault();
 
@@ -50,14 +48,14 @@ export default function Shipping() {
         <CheckoutSteps step={1} />
         <form
           onSubmit={shippingSubmit}
-          className="shadow-lg p-6 sm:p-8 md:p-12 rounded-md bg-white w-full sm:w-10/12 md:w-9/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 mx-auto"
+          className="mx-auto w-full rounded-md bg-white p-6 shadow-lg sm:w-10/12 sm:p-10 md:w-9/12 md:px-16 md:py-10 lg:w-8/12 xl:w-7/12 2xl:w-6/12"
         >
           {/* phone  */}
-          <h2 className="font-semibold text-center text-xl sm:text-2xl py-3 mb-2 sm:mb-5">
+          <h2 className="mb-2 py-3 text-center text-xl font-semibold sm:mb-5 sm:text-2xl">
             Shipping Details
           </h2>
 
-          <div className="flex flex-col mb-6">
+          <div className="mb-6 flex flex-col">
             <Label f="phone">Phone</Label>
             <div className="relative">
               <Input
@@ -72,7 +70,7 @@ export default function Shipping() {
           </div>
 
           {/* Address  */}
-          <div className="flex flex-col mb-6 ">
+          <div className="mb-6 flex flex-col ">
             <Label f="address">Full Address</Label>
             <div className="relative">
               <Input
@@ -86,7 +84,7 @@ export default function Shipping() {
             </div>
           </div>
           {/* Post Code  */}
-          <div className="flex flex-col mb-6 ">
+          <div className="mb-6 flex flex-col ">
             <Label f="post">Post Code</Label>
             <div className="relative">
               <Input
@@ -101,15 +99,15 @@ export default function Shipping() {
           </div>
 
           {/* City  */}
-          <div className="flex flex-col mb-6">
+          <div className="mb-6 flex flex-col">
             <Label f="city">City</Label>
-            <div className="relative w-full rounded-md flex border focus:border-gray-600 pl-2">
+            <div className="relative flex w-full rounded-md border pl-2 focus:border-gray-600">
               <PinCodeIcon />
               <select
                 value={shippingDetails.city}
                 onChange={handleInputChange}
                 name="city"
-                className="text-sm w-full pl-2 focus:border-gray-600 py-2.5 rounded-md bg-white  focus:outline-none"
+                className="w-full rounded-md bg-white py-2.5 pl-2 text-sm focus:border-gray-600  focus:outline-none"
                 id="city"
                 required
               >
@@ -120,15 +118,15 @@ export default function Shipping() {
             </div>
           </div>
           {/* Country  */}
-          <div className="flex flex-col mb-6">
+          <div className="mb-6 flex flex-col">
             <Label f="country">Country</Label>
-            <div className="relative w-full rounded-md flex border focus:border-gray-600 pl-2">
+            <div className="relative flex w-full rounded-md border pl-2 focus:border-gray-600">
               <CountryIcon />
               <select
                 value={shippingDetails.country}
                 onChange={handleInputChange}
                 name="country"
-                className="text-sm w-full pl-2 focus:border-gray-600 py-2.5 rounded-md bg-white  focus:outline-none"
+                className="w-full rounded-md bg-white py-2.5 pl-2 text-sm focus:border-gray-600  focus:outline-none"
                 id="country"
                 required
               >
@@ -143,7 +141,7 @@ export default function Shipping() {
             <input
               type="submit"
               value="Continue Submit"
-              className="cursor-pointer uppercase w-full py-4 flex items-center justify-center text-sm sm:text-base font-bold text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gray-900 py-4 text-center text-sm font-bold uppercase text-white duration-500 hover:bg-gray-600 sm:text-base"
             />
           </div>
         </form>

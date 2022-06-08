@@ -1,22 +1,21 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-
-// PRODUCT_REDUCER_LIST
+import { cartReducer } from "./reducers/cartReducer";
+import {
+  myOrdersReducer,
+  newOrderReducer,
+  orderDetailsReducer,
+} from "./reducers/orderReducer";
 import {
   productDetailsReducer,
   productsReducer,
 } from "./reducers/productsReducer";
-
-// USER_REDUCER_LIST
 import {
   forgetPasswordReducer,
   profileReducer,
   userReducer,
 } from "./reducers/userReducer";
-
-import { cartReducer } from "./reducers/cartReducer";
-import { newOrderReducer } from "./reducers/orderReducer";
 
 const reducer = combineReducers({
   productsList: productsReducer,
@@ -26,6 +25,8 @@ const reducer = combineReducers({
   forgetPassword: forgetPasswordReducer,
   cart: cartReducer,
   newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
+  orderDetails: orderDetailsReducer,
 });
 
 const userStorage = localStorage.getItem("userLogin")
