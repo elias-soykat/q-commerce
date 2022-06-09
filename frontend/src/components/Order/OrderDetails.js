@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Loading, SkeletonLoad } from "../../helper";
+import { Loading, MetaData, SkeletonLoad } from "../../helper";
 import { clearErrors, getOrderDetails } from "../../redux/actions/orderAction";
 
 export default function OrderDetails() {
@@ -21,13 +21,15 @@ export default function OrderDetails() {
   }, [dispatch, err, id]);
 
   return (
-    <section className="container my-20">
+    <section className="container my-20 px-3 sm:px-0">
       {loading && <Loading />}
+      <MetaData title="Order Details | Q Commerce" />
+
       {loading ? (
         <SkeletonLoad />
       ) : (
         <div className="py-16">
-          <h1 className="text-2xl font-semibold text-gray-800 sm:text-4xl">
+          <h1 className="text-xl font-semibold text-gray-800 sm:text-4xl">
             Order #{order._id}
           </h1>
 

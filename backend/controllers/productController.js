@@ -59,13 +59,14 @@ exports.deleteProduct = asyncHandler(async (req, res) => {
 
 // Create New Review or Update the review
 exports.createProductReview = asyncHandler(async (req, res) => {
-  const { rating, comment, productId } = req.body;
+  const { rating, comment, productId, userImg } = req.body;
 
   const review = {
     user: req.user._id,
     name: req.user.name,
     rating: Number(rating),
     comment,
+    url: userImg,
   };
 
   const product = await service.findById(productId);
@@ -76,7 +77,7 @@ exports.createProductReview = asyncHandler(async (req, res) => {
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
-      (rev.rating = rating), (rev.comment = comment);
+      (rev.rating = rating), (rev.comment = comment), (rev.url = userImg);
     });
   } else {
     product.reviews.push(review);

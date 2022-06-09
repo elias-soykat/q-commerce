@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import noProduct from "../assets/no-product.png";
 import { CloseNavBar, NavHamburger, Star, Unfilled } from "../assets/svg";
 import { Container } from "../components/Common";
 import { Product } from "../components/Product";
 import { Loading, MetaData, SkeletonLoad } from "../helper";
 import { categoryList, ratingList } from "../helper/helperObj";
 import { getProducts } from "../redux/actions/productAction";
-import noProduct from "../assets/no-product.png";
 
 let skeleton = [0, 1, 2, 3, 4, 5];
 export default function AllProducts() {
@@ -52,7 +52,7 @@ export default function AllProducts() {
           <div className="overflow-hidden rounded">
             <div
               onClick={() => setToggle(!toggle)}
-              className="flex items-center justify-between px-5 py-5  bg-gray-100 lg:hidden"
+              className="flex items-center justify-between bg-gray-100 px-5  py-5 lg:hidden"
             >
               <span className="text-sm font-medium">Toggle Filters</span>
 
@@ -65,12 +65,12 @@ export default function AllProducts() {
                 toggle && "hidden"
               } mt-2 border border-gray-200 lg:border-t-0`}
             >
-              <p className="block w-full px-6 py-4 text-xs font-medium bg-gray-100">
+              <p className="block w-full bg-gray-100 px-6 py-4 text-xs font-medium">
                 Category
               </p>
 
               {/* Category List  */}
-              <div className="px-6 py-6 space-y-2">
+              <div className="space-y-2 px-6 py-6">
                 {categoryList.map(({ id, title, type }) => (
                   <div key={id} className="mb-3">
                     <input
@@ -83,7 +83,7 @@ export default function AllProducts() {
                     />
                     <label
                       htmlFor={title}
-                      className="ml-3 text-sm font-medium cursor-pointer"
+                      className="ml-3 cursor-pointer text-sm font-medium"
                     >
                       {title}
                     </label>
@@ -101,11 +101,11 @@ export default function AllProducts() {
               </div>
 
               {/* Ratings List  */}
-              <p className="block w-full px-6 py-4 text-xs font-medium bg-gray-100">
+              <p className="block w-full bg-gray-100 px-6 py-4 text-xs font-medium">
                 Ratings
               </p>
 
-              <div className="px-6 py-6 space-y-2">
+              <div className="space-y-2 px-6 py-6">
                 {ratingList.map(({ id, type }) => (
                   <div key={id} className="mb-3">
                     <input id={id} type={type} name="rating" />
@@ -133,18 +133,18 @@ export default function AllProducts() {
                 </div>
               </div>
 
-              <div className="flex justify-between px-5 py-3 border-t border-gray-200">
+              <div className="flex justify-between border-t border-gray-200 px-5 py-3">
                 <button
                   name="reset"
                   type="button"
-                  className="text-xs font-medium text-gray-600 underline rounded"
+                  className="rounded text-xs font-medium text-gray-600 underline"
                 >
                   Reset All
                 </button>
 
                 <input
                   type="submit"
-                  className="px-5 py-2 text-sm bg-gray-800 text-white rounded-md font-medium"
+                  className="rounded-md bg-gray-800 px-5 py-2 text-sm font-medium text-white"
                   value="Apply Filters"
                 />
               </div>
@@ -152,11 +152,11 @@ export default function AllProducts() {
           </div>
         </div>
 
-        <div className="lg:col-span-3 mt-2 xl:ml-4">
-          <div className="py-3 flex items-center justify-between">
+        <div className="mt-2 lg:col-span-3 xl:ml-4">
+          <div className="flex items-center justify-between py-3">
             {keyword && (
               <div>
-                <h1 className="text-xl sm:text-2xl font-medium">
+                <h1 className="text-xl font-medium sm:text-2xl">
                   Searching : {keyword}
                 </h1>
               </div>
@@ -167,17 +167,17 @@ export default function AllProducts() {
               {products?.length} of {total} Products
             </div>
 
-            <div className="relative text-sm focus:outline-none group mt-4 sm:mt-0">
+            <div className="group relative mt-4 text-sm focus:outline-none sm:mt-0">
               <select
                 onChange={(e) => setSort(e.target.value)}
-                className="text-sm rounded px-2.5 py-1 "
+                className="rounded px-2.5 py-1 text-sm "
               >
                 <option value="price-asc">Price, Low-High</option>
                 <option value="price-desc">Price, High-Low</option>
               </select>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
             {loading &&
               skeleton.map((product) => <SkeletonLoad key={product} />)}
 
@@ -186,13 +186,13 @@ export default function AllProducts() {
             ))}
           </div>
 
-          <div className="flex items-center justify-center my-6 sm:my-12">
+          <div className="my-6 flex items-center justify-center sm:my-12">
             {products?.length === 0 && !loading && (
               <img width="25%" src={noProduct} alt="product" />
             )}
           </div>
 
-          <div className="flex items-center justify-end mt-12 sm:mt-20">
+          <div className="mt-12 flex items-center justify-end sm:mt-20">
             {Array.from(Array(pages).keys()).map((btn) => (
               <button
                 key={btn}
@@ -200,12 +200,12 @@ export default function AllProducts() {
                 className={`${
                   btn + 1 === pageNumber &&
                   "bg-gray-500 text-white hover:bg-gray-700"
-                } bg-white text-gray-900 py-1.5 sm:py-2 px-4 sm:px-5 border border-gray-600 hover:bg-gray-200`}
+                } border border-gray-600 bg-white py-1.5 px-4 text-gray-900 hover:bg-gray-200 sm:py-2 sm:px-5`}
               >
                 {btn + 1}
               </button>
             ))}
-            <button className="py-1.5 sm:py-2 px-4 sm:px-5 bg-white text-gray-600 border border-gray-600 hover:bg-gray-200">
+            <button className="border border-gray-600 bg-white py-1.5 px-4 text-gray-600 hover:bg-gray-200 sm:py-2 sm:px-5">
               Next
             </button>
           </div>

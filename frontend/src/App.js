@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Dashboard } from "./components/Admin";
 import {
   ForgetPassword,
   Login,
@@ -71,6 +72,7 @@ export default function App() {
 
           <Route path="/orders" element={<MyOrders />} />
           <Route path="/order/:id" element={<OrderDetails />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Route>
 
         {/* auth route  */}

@@ -36,7 +36,7 @@ export default function DropDown({ user }) {
     options.unshift({
       name: "Dashboard",
       func() {
-        navigate("/dashboard");
+        navigate("/admin/dashboard");
       },
     });
   }
@@ -47,11 +47,11 @@ export default function DropDown({ user }) {
   };
 
   return (
-    <div className="mb-5 relative text-sm md:mr-12  md:my-0">
+    <div className="relative mb-5 text-sm md:my-0  md:mr-12">
       <Toaster />
       <button
         onClick={() => setClick(!click)}
-        className="flex items-center justify-center w-28 rounded font-medium py-2.5 text-white bg-gray-900"
+        className="flex w-28 items-center justify-center rounded bg-gray-900 py-2.5 font-medium text-white"
       >
         {user?.name.slice(0, 6)}
         <span className="pl-2">
@@ -59,12 +59,12 @@ export default function DropDown({ user }) {
         </span>
       </button>
       {click && (
-        <div className="absolute z-50 w-28 text-white text-left rounded-b-md font-medium bg-gray-700">
+        <div className="absolute z-50 w-28 rounded-b-md bg-gray-700 text-left font-medium text-white">
           {options.map(({ name, func }) => (
             <div
               key={name}
               onClick={() => userRouteHandler(func)}
-              className="cursor-pointer border-b py-3 text-center text-xs  hover:bg-gray-500 block hover:border-b hover:border-b-gray-500"
+              className="block cursor-pointer border-b py-3 text-center  text-xs hover:border-b hover:border-b-gray-500 hover:bg-gray-500"
             >
               {name}
             </div>

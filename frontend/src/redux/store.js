@@ -8,6 +8,7 @@ import {
   orderDetailsReducer,
 } from "./reducers/orderReducer";
 import {
+  newReviewReducer,
   productDetailsReducer,
   productsReducer,
 } from "./reducers/productsReducer";
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   newOrder: newOrderReducer,
   myOrders: myOrdersReducer,
   orderDetails: orderDetailsReducer,
+  newReview: newReviewReducer,
 });
 
 const userStorage = localStorage.getItem("userLogin")

@@ -3,11 +3,12 @@ import Rating from "react-rating";
 import { Star, Unfilled } from "../../assets/svg";
 
 export default function ProductReview({ pro }) {
+  console.log(pro);
   return (
     <section>
-      <div className="max-w-screen-xl mx-auto  py-12 md:py-20 px-4 md:px-12">
+      <div className="mx-auto max-w-screen-xl  py-12 px-4 md:py-20 md:px-12">
         <h2 className="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
-        <div className="flex items-center my-6">
+        <div className="my-6 flex items-center">
           <p className="text-3xl font-medium">
             3.8
             <span className="sr-only">Average review score </span>
@@ -26,40 +27,30 @@ export default function ProductReview({ pro }) {
           </div>
         </div>
 
-        <div className="md:w-9/12 lg:w-8/12 grid grid-cols-1">
-          {[1, 2, 3].map((r) => (
+        <div className="grid grid-cols-1 md:w-9/12 lg:w-8/12">
+          {pro.reviews.map((r) => (
             <blockquote
-              key={r}
-              className="my-2 sm:my-2.5 border-b border-gray-300 py-4"
+              key={r._id}
+              className="my-2 border-b border-gray-300 py-4 sm:my-2.5"
             >
-              <header className="sm:flex sm:items-center justify-between pt-1">
-                <p className="font-medium text-lg">
-                  The best thing money can buy!
-                </p>
+              <header className="justify-between pt-1 sm:flex sm:items-center">
+                <p className="text-lg font-medium">{r.comment}</p>
                 <Rating
                   emptySymbol={<Unfilled />}
                   fullSymbol={<Star />}
-                  initialRating={3}
+                  initialRating={r.rating}
                   fractions={2}
                   readonly={true}
-                  className="text-sm mt-2 sm:mt-0"
+                  className="mt-2 text-sm sm:mt-0"
                 />
               </header>
-              <p className="my-2 sm:my-4 text-gray-500 text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                possimus fuga dolor rerum dicta, ipsum laboriosam est totam
-                iusto alias incidunt cum tempore auam ipsam
-              </p>
+              <p className="my-2 text-sm text-gray-500 sm:my-4">{r.comment}</p>
 
-              <footer className="py-1 flex items-center">
-                <img
-                  className="w-8 sm:w-12"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbvHpEOo3fTsZQkp5Hfd93YrByM9P4F944GylcXSwZ7xzop2YZo6KH7lFdu1FsdBJ3E8g&usqp=CAU"
-                  alt="user"
-                />
+              <footer className="flex items-center py-1">
+                <img className="w-8 sm:w-14" src={r.url} alt="user" />
                 <div className=" ml-5">
-                  <p className="inline">John Doe</p>
-                  <i className="text-xs ml-5">12th January, 2024</i>
+                  <p className="inline">{r.name}</p>
+                  <i className="ml-5 text-xs">12th January, 2024</i>
                 </div>
               </footer>
             </blockquote>

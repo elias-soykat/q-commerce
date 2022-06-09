@@ -17,7 +17,7 @@ export default function ProductSingle() {
 
   return (
     <div>
-      <MetaData title={`${product?.name || "Product"} | Q - Commerce`} />
+      <MetaData title={`${product.name || "Product"} | Q - Commerce`} />
       {loading && <Loading />}
       {Object.keys(product).length === 0 ? (
         <ProductSkeleton />

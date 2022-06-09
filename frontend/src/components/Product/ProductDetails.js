@@ -10,7 +10,7 @@ import {
   Unfilled,
 } from "../../assets/svg";
 import { addItemsCart } from "../../redux/actions/cartAction";
-import Modal from "../Utils/Modal";
+import { Modal } from "../Utils";
 
 export default function ProductDetails({ pro, id }) {
   const dispatch = useDispatch();
@@ -44,6 +44,7 @@ export default function ProductDetails({ pro, id }) {
   };
 
   const [toggle, setToggle] = useState("none");
+
   const displayModalHandler = (status) => setToggle(status);
 
   return (
@@ -77,36 +78,8 @@ export default function ProductDetails({ pro, id }) {
               perferendis facilis eos adipisci earum!
             </p>
 
-            <Modal closeModal={displayModalHandler} openModal={toggle}>
-              <div className="flex w-full flex-col items-start justify-center rounded-md bg-white p-3">
-                <div className="flex items-start">
-                  <textarea
-                    className="border"
-                    name="review"
-                    id=""
-                    cols="30"
-                    rows="4"
-                  ></textarea>
-                  <p
-                    onClick={() => displayModalHandler("none")}
-                    className="cursor-pointer px-3 font-medium"
-                  >
-                    X
-                  </p>
-                </div>
-                <Rating
-                  emptySymbol={<Unfilled />}
-                  fullSymbol={<Star />}
-                  initialRating={ratings}
-                  fractions={2}
-                  className="my-3 text-sm"
-                />
+            <Modal toggle={toggle} displayModalHandler={displayModalHandler} />
 
-                <button className="rounded-mg my-1 flex justify-center rounded-md bg-gray-500 px-6 py-1 text-sm text-white">
-                  Submit
-                </button>
-              </div>
-            </Modal>
             <div className="mt-6">
               <div className="flex flex-wrap items-center justify-between">
                 <div className="flex items-center">
@@ -123,7 +96,7 @@ export default function ProductDetails({ pro, id }) {
                 <button
                   onClick={() => displayModalHandler("block")}
                   type="button"
-                  className="rounded bg-gray-600 px-4 py-2 text-xs text-white sm:text-sm"
+                  className="rounded bg-gray-700 px-4 py-2 text-xs text-white hover:bg-gray-600 sm:text-sm"
                 >
                   Submit Review
                 </button>
@@ -160,6 +133,7 @@ export default function ProductDetails({ pro, id }) {
                 </div>
                 <button
                   onClick={addCartHandler}
+                  disabled={stock > 0 ? false : true}
                   type="button"
                   className="flex items-center justify-between rounded-md bg-gray-900 px-6 py-2.5 text-sm font-bold text-white duration-500 hover:bg-gray-600"
                 >
