@@ -1,4 +1,5 @@
-import Admin from "./Admin";
 import Dashboard from "./Dashboard";
+import ProductList from "./ProductList";
+import Sidebar from "./Sidebar";
 
-export { Admin, Dashboard };
+export { Dashboard, Sidebar, ProductList };

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Loading, MetaData } from "../helper";
 import { Link, useNavigate } from "react-router-dom";
 import { Container } from "../components/Common";
+import { Loading, MetaData } from "../helper";
 
 export default function Account() {
   const navigate = useNavigate();
@@ -23,26 +23,26 @@ export default function Account() {
         } | Q - Commerce`}
       />
       {loading && <Loading />}
-      <div className="container mt-16 flex flex-wrap justify-center items-center">
-        <div className="shadow-lg px-6 py-8">
-          <h3 className="font-medium py-5 text-2xl">My Profile</h3>
+      <div className="container mt-16 flex flex-wrap items-center justify-center">
+        <div className="px-6 py-8 shadow-lg">
+          <h3 className="py-5 text-2xl font-medium">My Profile</h3>
           <img width="25%" src={user?.avatar.url} alt="user" />
           <br />
-          <h1 className="text-lg sm:text-xl md:text-2xl font-medium mt-2">
+          <h1 className="mt-2 text-lg font-medium sm:text-xl md:text-2xl">
             {user?.name}
           </h1>
-          <p className="text-gray-500 mt-1 mb-6 font-medium">
+          <p className="mt-1 mb-6 font-medium text-gray-500">
             Software Developer
           </p>
           <Link
-            className="bg-neutral-500 text-white px-7 font-medium rounded-md py-3"
+            className="rounded-md bg-neutral-500 px-7 py-3 font-medium text-white"
             to="/user/update"
           >
             Edit Profile
           </Link>
         </div>
-        <div className="shadow-lg px-4 py-8 sm:ml-8">
-          <h2 className="text-left font-medium text-lg sm:text-2xl">
+        <div className="px-4 py-8 shadow-lg sm:ml-8">
+          <h2 className="text-left text-lg font-medium sm:text-2xl">
             General information
           </h2>
           <br />
@@ -55,14 +55,14 @@ export default function Account() {
 
           <br />
           <Link
-            to="/"
-            className="bg-slate-600 text-white py-3 px-4 rounded-md shadow-md mr-2"
+            to="/orders"
+            className="mr-2 rounded-md bg-slate-600 py-3 px-4 text-white shadow-md"
           >
             My Orders
           </Link>
           <Link
             to="/password/update"
-            className="bg-gray-700 text-white py-3 px-4 rounded-md shadow-md"
+            className="rounded-md bg-gray-700 py-3 px-4 text-white shadow-md"
           >
             Change Password
           </Link>

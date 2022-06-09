@@ -24,6 +24,12 @@ exports.getAllProducts = asyncHandler(async (req, res) => {
   res.status(200).json({ products, pages, total });
 });
 
+// Get All Products (Admin)
+exports.getAdminProducts = asyncHandler(async (req, res) => {
+  const products = await service.find();
+  res.status(200).json(products);
+});
+
 // Get Product Details
 exports.getProductDetails = asyncHandler(async (req, res) => {
   const product = await service.findById(req.params.id);

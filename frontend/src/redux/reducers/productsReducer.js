@@ -1,4 +1,7 @@
 import {
+  ADMIN_PRODUCT_FAIL,
+  ADMIN_PRODUCT_REQUEST,
+  ADMIN_PRODUCT_SUCCESS,
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,
@@ -23,6 +26,7 @@ const productsState = {
 export function productsReducer(state = productsState, action) {
   switch (action.type) {
     case ALL_PRODUCT_REQUEST:
+    case ADMIN_PRODUCT_REQUEST:
       return { ...state, loading: true, products: state.products };
 
     case ALL_PRODUCT_SUCCESS:
@@ -34,7 +38,15 @@ export function productsReducer(state = productsState, action) {
         total: action.payload.total,
       };
 
+    case ADMIN_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        products: action.payload,
+      };
+
     case ALL_PRODUCT_FAIL:
+    case ADMIN_PRODUCT_FAIL:
       return { loading: true, err: action.payload };
 
     case CLEAR_ERRORS:

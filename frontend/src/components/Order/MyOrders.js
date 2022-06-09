@@ -40,27 +40,36 @@ export default function MyOrders() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
-              <tr key={order._id} className="h-14 border-b border-gray-400">
-                <td className="pl-10">{order._id}</td>
-                <td
-                  className={`${
-                    order.orderStatus === "Processing"
-                      ? "text-red-500"
-                      : "text-green-500"
-                  } font-medium`}
+            {orders.length === 0 ? (
+              <h2 className="my-8 text-right text-lg font-medium">
+                No Order is available
+              </h2>
+            ) : (
+              orders.map((order) => (
+                <tr
+                  key={order._id}
+                  className="h-14 border-b border-gray-400 duration-200 hover:bg-gray-500 hover:text-white"
                 >
-                  {order.orderStatus}
-                </td>
-                <td>{order.orderItems.length}</td>
-                <td>$ {order.totalPrice}</td>
-                <td>
-                  <Link to={`/order/${order._id}`}>
-                    <RightArrow border="border border-gray-400 p-1 rounded-full bg-gra-700 cursor-pointer h-[32px] w-8" />
-                  </Link>
-                </td>
-              </tr>
-            ))}
+                  <td className="pl-10">{order._id}</td>
+                  <td
+                    className={`${
+                      order.orderStatus === "Processing"
+                        ? "text-red-500"
+                        : "text-green-500"
+                    } font-medium`}
+                  >
+                    {order.orderStatus}
+                  </td>
+                  <td>{order.orderItems.length}</td>
+                  <td>$ {order.totalPrice}</td>
+                  <td>
+                    <Link to={`/order/${order._id}`}>
+                      <RightArrow border="border border-gray-400 p-1 rounded-full bg-gra-700 cursor-pointer h-[32px] w-8" />
+                    </Link>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

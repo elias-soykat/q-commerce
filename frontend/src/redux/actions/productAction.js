@@ -13,6 +13,10 @@ export const NEW_REVIEW_SUCCESS = "NEW_REVIEW_SUCCESS";
 export const NEW_REVIEW_FAIL = "NEW_REVIEW_FAIL";
 export const NEW_REVIEW_RESET = "NEW_REVIEW_RESET";
 
+export const ADMIN_PRODUCT_REQUEST = "ADMIN_PRODUCT_REQUEST";
+export const ADMIN_PRODUCT_SUCCESS = "ADMIN_PRODUCT_SUCCESS";
+export const ADMIN_PRODUCT_FAIL = "ADMIN_PRODUCT_FAIL";
+
 // Get all Product Details
 export const getProducts =
   (pageNumber = 1, keyword = "", category = "") =>
@@ -58,5 +62,18 @@ export const newReview = (reviewData) => async (dispatch) => {
     dispatch({ type: NEW_REVIEW_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: NEW_REVIEW_FAIL, payload: err.response.data });
+  }
+};
+
+// Get all Product Details(Admin)
+export const getAdminProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_PRODUCT_REQUEST });
+
+    const { data } = await axios.get("/api/v1/admin/products");
+
+    dispatch({ type: ADMIN_PRODUCT_SUCCESS, payload: data });
+  } catch (err) {
+    dispatch({ type: ADMIN_PRODUCT_FAIL, payload: err.response.data });
   }
 };

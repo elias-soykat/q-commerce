@@ -3,7 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "./components/Admin";
+import { Dashboard, ProductList } from "./components/Admin";
 import {
   ForgetPassword,
   Login,
@@ -42,43 +42,47 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<AllProducts />}>
-          <Route path=":keyword" element={<AllProducts />} />
-          <Route path="/products" element={<AllProducts />} />
-        </Route>
-
-        {/* Normal Route  */}
         <Route path="/product/:id" element={<ProductSingle />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/password/forget" element={<ForgetPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
 
+        {/* Dashboard Route  */}
+        <Route path="/*" element={<PrivateRoute isAdmin />}>
+          <Route path="admin/dashboard" element={<Dashboard />} />
+          <Route path="admin/products" element={<ProductList />} />
+        </Route>
+
         {/* Private Route  */}
-        <Route element={<PrivateRoute />}>
-          <Route path="/account" element={<Account />} />
-          <Route path="/user/update" index element={<UpdateProfile />} />
-          <Route path="/password/update" element={<UpdatePassword />} />
-          <Route path="/shipping" element={<Shipping />} />
-          <Route path="/order/confirm" element={<ConfirmOrder />} />
-          <Route path="/order/success" element={<OrderSuccess />} />
+        <Route path="/*" element={<PrivateRoute />}>
+          <Route path="account" element={<Account />} />
+          <Route path="user/update" index element={<UpdateProfile />} />
+          <Route path="password/update" element={<UpdatePassword />} />
+          <Route path="shipping" element={<Shipping />} />
+          <Route path="order/confirm" element={<ConfirmOrder />} />
+          <Route path="order/success" element={<OrderSuccess />} />
+          <Route path="orders" element={<MyOrders />} />
+          <Route path="order/:id" element={<OrderDetails />} />
           <Route
-            path="/process/payment"
+            path="process/payment"
             element={
               <Elements stripe={loadStripe(stripeKey)}>
                 <Payment />
               </Elements>
             }
           />
-
-          <Route path="/orders" element={<MyOrders />} />
-          <Route path="/order/:id" element={<OrderDetails />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Route>
 
-        {/* auth route  */}
+        {/* Auth route  */}
         <Route path="auth/*" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+        </Route>
+
+        {/* Products Search Route  */}
+        <Route path="/products" element={<AllProducts />}>
+          <Route path=":keyword" element={<AllProducts />} />
+          <Route path="/products" element={<AllProducts />} />
         </Route>
       </Routes>
       <Footer />
