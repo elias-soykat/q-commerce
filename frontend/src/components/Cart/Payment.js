@@ -1,6 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -81,6 +81,8 @@ export default function Payment() {
 
           dispatch(createOrder(order));
           navigate("/order/success");
+
+          toast.success("Payment Successful");
         } else {
           toast.error("There's some issue while processing payment");
         }

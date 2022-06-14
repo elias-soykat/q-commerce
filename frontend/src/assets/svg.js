@@ -585,3 +585,61 @@ export const TrashIcon = () => (
     </g>
   </svg>
 );
+
+export const ProductIcon = () => (
+  <svg width="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path
+      stroke="#9ca3af"
+      d="M 16 3 C 8.832 3 3 8.832 3 16 C 3 23.168 8.832 29 16 29 C 23.168 29 29 23.168 29 16 C 29 8.832 23.168 3 16 3 z M 16 5 C 22.065 5 27 9.935 27 16 C 27 22.065 22.065 27 16 27 C 9.935 27 5 22.065 5 16 C 5 9.935 9.935 5 16 5 z M 13 11 L 13 22 L 15 22 L 15 18 L 17.5 18 C 19.431 18 21 16.431 21 14.5 C 21 12.569 19.431 11 17.5 11 L 13 11 z M 15 13 L 17.5 13 C 18.327 13 19 13.673 19 14.5 C 19 15.327 18.327 16 17.5 16 L 15 16 L 15 13 z"
+    />
+  </svg>
+);
+
+export const ProductPrice = () => (
+  <svg
+    enableBackground="new 0 0 50 50"
+    version="1.1"
+    viewBox="0 0 50 50"
+    width="20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect fill="none" height="50" width="50" />
+    <circle
+      cx="39"
+      cy="11"
+      fill="none"
+      r="3"
+      stroke="#9ca3af"
+      strokeLinecap="round"
+      strokeMiterlimit="10"
+      strokeWidth="2"
+    />
+    <path
+      d="M47,5.5  C47,4.119,45.881,3,44.5,3c-0.156,0-14.876,0.002-14.876,0.002c-1.33,0-2.603-0.07-3.341,0.668L3.554,26.398  c-0.739,0.738-0.739,1.936,0,2.674l17.374,17.374c0.738,0.738,1.936,0.738,2.674,0L46.33,23.717c0.738-0.737,0.668-1.98,0.668-3.34  C46.998,20.377,47,5.656,47,5.5z"
+      fill="none"
+      stroke="#9ca3af"
+      strokeLinecap="round"
+      strokeMiterlimit="10"
+      strokeWidth="2"
+    />
+  </svg>
+);
+
+export const CategoriesIcon = () => (
+  <svg
+    stroke="#9ca3af"
+    viewBox="0 0 22.99 22.99"
+    width="20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title />
+    <g data-name="Camada 2" id="Camada_2">
+      <g data-name="Camada 1" id="Camada_1-2">
+        <path
+          stroke="#9ca3af"
+          d="M22.49,22H1.71L9.1,14.6l3.24,3.24a.5.5,0,0,0,.17.11.5.5,0,0,0,.38,0,.5.5,0,0,0,.17-.11L21.78,9.1v3.23a.5.5,0,0,0,1,0V7.89a.5.5,0,0,0-.5-.5H17.85a.5.5,0,0,0,0,1h3.23l-8.39,8.39L9.45,13.54a.5.5,0,0,0-.71,0L1,21.29V.5a.5.5,0,0,0-1,0v22a.5.5,0,0,0,.14.35h0a.52.52,0,0,0,.16.1A.51.51,0,0,0,.5,23h22a.5.5,0,0,0,0-1Z"
+        />
+      </g>
+    </g>
+  </svg>
+);

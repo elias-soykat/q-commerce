@@ -1,6 +1,6 @@
 export const FooterIcon = () => (
   <>
-    <p className="hover:opacity-70 cursor-pointer">
+    <p className="cursor-pointer hover:opacity-70">
       <svg
         className="w-7"
         fill="currentColor"
@@ -15,7 +15,7 @@ export const FooterIcon = () => (
       </svg>
     </p>
 
-    <p className="hover:opacity-70 cursor-pointer">
+    <p className="cursor-pointer hover:opacity-70">
       <svg
         className="w-7"
         fill="currentColor"
@@ -26,7 +26,7 @@ export const FooterIcon = () => (
       </svg>
     </p>
 
-    <p className="hover:opacity-70 cursor-pointer">
+    <p className="cursor-pointer hover:opacity-70">
       <svg
         className="w-7"
         fill="currentColor"

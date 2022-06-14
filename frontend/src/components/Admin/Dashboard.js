@@ -1,8 +1,20 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MetaData } from "../../helper";
+import { getAllOrders } from "../../redux/actions/orderAction";
+import { getAdminProducts } from "../../redux/actions/productAction";
 import Sidebar from "./Sidebar";
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.productsList);
+  const { orders } = useSelector((state) => state.allOrders);
+
+  useEffect(() => {
+    dispatch(getAdminProducts());
+    dispatch(getAllOrders());
+  }, [dispatch]);
+
   return (
     <section className="container my-20">
       <MetaData title="Dashboard | Q Commerce " />
@@ -18,10 +30,10 @@ export default function Dashboard() {
 
           <div className="my-8 flex flex-wrap items-center justify-evenly">
             <div className="m-2 flex h-32 w-32 items-center justify-center rounded-full border bg-teal-600 p-6 text-center font-medium text-white">
-              Product 50
+              Products {products.length || "00"}
             </div>
             <div className="m-2 flex h-32 w-32 items-center justify-center rounded-full border bg-orange-600 p-6  text-center font-medium text-white">
-              Orders 40
+              Orders {orders.length || "00"}
             </div>
             <div className="m-2 flex h-32 w-32 items-center justify-center rounded-full border bg-violet-500 p-6 text-center  font-medium text-white">
               Users 30

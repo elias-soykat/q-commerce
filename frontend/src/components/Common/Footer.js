@@ -1,12 +1,20 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import { FooterIcon } from "../../assets/footer";
 import Container from "./Container";
 
 export default function Footer() {
   const { pathname: path } = useLocation();
+  const updatePage = path.split("/")[3];
+  const orderPage = path.split("/")[2];
 
-  const checkPath = path !== "/admin/dashboard" && path !== "/admin/products";
+  const checkPath =
+    path !== "/admin/dashboard" &&
+    path !== "/admin/products" &&
+    path !== "/admin/product/create" &&
+    path !== "/admin/orders" &&
+    path !== "/admin/users" &&
+    updatePage !== "update" &&
+    orderPage !== "order";
 
   return (
     checkPath && (

@@ -40,12 +40,12 @@ export default function MyOrders() {
             </tr>
           </thead>
           <tbody>
-            {orders.length === 0 ? (
+            {orders?.length === 0 ? (
               <h2 className="my-8 text-right text-lg font-medium">
                 No Order is available
               </h2>
             ) : (
-              orders.map((order) => (
+              orders?.map((order) => (
                 <tr
                   key={order._id}
                   className="h-14 border-b border-gray-400 duration-200 hover:bg-gray-500 hover:text-white"

@@ -20,26 +20,35 @@ export default function Sidebar() {
         </div>
         <div className="relative my-6  flex w-32 items-center justify-between">
           <img src={products} alt="sidebar icon" className="ml-1.5" />
-          <h1 onClick={() => setActive(!active)} className="flex pl-4">
+          <h1
+            onClick={() => setActive(!active)}
+            className="flex cursor-pointer pl-4"
+          >
             Products <CaretDown color="bg-slate-600" />
           </h1>
 
           {active && (
-            <div className="absolute top-10 left-3 space-y-2 bg-white px-1.5 py-3 underline shadow-lg">
-              <Link to="/admin/products" className="text-sm">
+            <div className="absolute top-10 left-3 cursor-pointer space-y-2 bg-white px-1.5 py-3 underline shadow-lg">
+              <Link to="/admin/products" className="block text-sm">
                 All Products
               </Link>
-              <p className="text-sm">Create Products</p>
+              <Link to="/admin/product/create" className="block text-sm">
+                Create Product
+              </Link>
             </div>
           )}
         </div>
         <div className="my-6  flex w-32 items-center justify-between">
           <img src={orders} alt="sidebar icon" />
-          <h1 className="pr-[22px]">Orders</h1>
+          <Link to="/admin/orders" className="pr-[22px]">
+            Orders
+          </Link>
         </div>
         <div className="my-6 flex  w-32 items-center justify-between">
           <img src={users} alt="sidebar icon" />
-          <h1 className="pr-[29px]">Users</h1>
+          <Link to="/admin/users" className="pr-[29px]">
+            Users
+          </Link>
         </div>
         <div className="my-6 flex  w-32 items-center justify-between">
           <img src={reviews} alt="sidebar icon" className="ml-1" />

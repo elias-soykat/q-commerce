@@ -42,3 +42,20 @@ export const ratingList = [
     type: "checkbox",
   },
 ];
+
+export const productCategories = [
+  "Laptop",
+  "Mobile",
+  "Computer",
+  "TV",
+  "Camera",
+  "Speaker",
+  "Headphone",
+  "Earphone",
+  "Watch",
+  "Tablet",
+  "Printer",
+  "Accessories",
+  "Software",
+  "Others",
+];

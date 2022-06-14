@@ -226,12 +226,14 @@ exports.updateUserRole = asyncHandler(async (req, res) => {
 
 // Delete User -- Admin
 exports.deleteUser = asyncHandler(async (req, res) => {
-  const user = await service.findById(req.params.id);
-  // We will remove cloudberry latter
+  const user = await User.findById(req.params.id);
 
   if (!user) {
     return res.status(404).json("That user is not available");
   }
+
+  const imageId = user.avatar.public_id;
+  await cloudinary.v2.uploader.destroy(imageId);
 
   await service.deleteOne({ _id: req.params.id });
   res.status(200).json(`${req.params.id} deleted successfully`);

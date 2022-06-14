@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -21,7 +22,7 @@ export default function AllProducts() {
 
   const { keyword } = useParams();
 
-  const { products, loading, pages, total } = useSelector(
+  const { products, loading, pages, total, err } = useSelector(
     (state) => state.productsList
   );
 
@@ -32,14 +33,18 @@ export default function AllProducts() {
   }, [category, dispatch, keyword, pageNumber]);
 
   useEffect(() => {
+    if (err) {
+      toast.error(err.message || err);
+    }
+
     if (sort === "price-asc") {
-      const result = products.sort((a, b) => a.price - b.price);
+      const result = products.sort((a, b) => a.price - b.price) || [];
       setFilteredProducts([...result]);
     } else if (sort === "price-desc") {
-      const result = products.sort((a, b) => b.price - a.price);
+      const result = products.sort((a, b) => b.price - a.price) || [];
       setFilteredProducts([...result]);
     }
-  }, [products, sort]);
+  }, [err, products, sort]);
 
   const title = keyword ? `Search for ${keyword}` : "All Products";
 

@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { EditIcon, TrashIcon } from "../../assets/svg";
 import { Loading, MetaData } from "../../helper";
-import { getAdminProducts } from "../../redux/actions/productAction";
+import {
+  deleteSingleProduct,
+  getAdminProducts,
+} from "../../redux/actions/productAction";
 import { clearErrors } from "../../redux/actions/userAction";
 import Sidebar from "./Sidebar";
 
@@ -12,22 +15,38 @@ export default function ProductList() {
   const dispatch = useDispatch();
   const { products, loading, err } = useSelector((state) => state.productsList);
 
+  const {
+    isDelete,
+    err: errDelete,
+    loading: isLoading,
+  } = useSelector((state) => state.product);
+
   useEffect(() => {
     if (err) {
       toast.error(err);
       dispatch(clearErrors());
     }
 
+    if (errDelete) {
+      toast.error(errDelete);
+      dispatch(clearErrors());
+    }
+
+    if (isDelete) {
+      toast.success(isDelete);
+      dispatch({ type: "DELETE_PRODUCT_RESET" });
+    }
+
     dispatch(getAdminProducts());
-  }, [dispatch, err]);
+  }, [dispatch, err, errDelete, isDelete]);
 
   const checkProduct = products.length > 0;
 
   return (
     <section className="container my-20">
       <MetaData title="All Products | Q Commerce " />
-      {loading && <Loading />}
-      <div className="overflow-hidden">
+      {(loading || isLoading) && <Loading />}
+      <div className={`${checkProduct && "overflow-auto"}`}>
         <Sidebar />
         <div className="my-4 flex flex-col sm:my-0 md:ml-[300px]">
           <h3 className="my-10 text-center text-2xl font-medium sm:text-3xl">
@@ -60,12 +79,17 @@ export default function ProductList() {
                     <td>{order.stock}</td>
                     <td>$ {order.price}</td>
                     <td className="flex items-center justify-center pt-3">
-                      <Link to="/">
+                      <Link
+                        to={`/admin/product/update/${order._id}`}
+                        className="mr-2"
+                      >
                         <EditIcon />
                       </Link>
-                      <Link to="/">
+                      <button
+                        onClick={() => dispatch(deleteSingleProduct(order._id))}
+                      >
                         <TrashIcon />
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 ))}

@@ -1,9 +1,32 @@
 const { asyncHandler } = require("../middleware/errorMiddleware");
 const ApiFeatures = require("../utils/apiFeatures");
 const service = require("../services/productService");
+const cloudinary = require("cloudinary");
 
 // Create Product -- Admin
 exports.createProduct = asyncHandler(async (req, res) => {
+  let images = [];
+
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  const imagesLink = [];
+
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
+    });
+
+    imagesLink.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+
+  req.body.images = imagesLink;
   req.body.user = req.user.id;
   const product = await service.create(req.body);
   res.status(201).json(product);
@@ -47,6 +70,38 @@ exports.updateProduct = asyncHandler(async (req, res) => {
   if (!product) {
     return res.status(404).json("That product is not available");
   }
+
+  // Images start Here
+  let images = [];
+
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  if (images !== undefined) {
+    // Deleting image from cloudinary
+    for (let i = 0; i < product.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    }
+
+    const imagesLink = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+
+      imagesLink.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLink;
+  }
+
   product = await service.findByIdAndUpdate(req.params.id, req.body);
   res.status(200).json(product);
 });
@@ -57,6 +112,11 @@ exports.deleteProduct = asyncHandler(async (req, res) => {
 
   if (!product) {
     return res.status(404).json("That product is not available");
+  }
+
+  // Deleting image from cloudinary
+  for (let i = 0; i < product.images.length; i++) {
+    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
   }
 
   await service.deleteOne({ _id: req.params.id });

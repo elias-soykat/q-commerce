@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -70,7 +70,7 @@ export default function OrderDetails() {
             </h3>
             <p className="py-1 text-lg">
               <span className="font-medium">Order Status</span> : &nbsp;
-              {order.orderStatus}
+              <span className="text-xl font-semibold">{order.orderStatus}</span>
             </p>
           </div>
 

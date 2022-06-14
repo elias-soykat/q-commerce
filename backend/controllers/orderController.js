@@ -68,9 +68,11 @@ exports.updateOrderStatus = asyncHandler(async (req, res) => {
     return res.status(400).json("You have already delivered this order");
   }
 
-  order.orderItems.forEach(async (o) => {
-    await updateStock(o.product, o.quantity);
-  });
+  if (req.body.status === "Shipped") {
+    order.orderItems.forEach(async (o) => {
+      await updateStock(o.product, o.quantity);
+    });
+  }
 
   order.orderStatus = req.body.status;
 

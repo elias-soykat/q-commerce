@@ -1,9 +1,17 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Dashboard, ProductList } from "./components/Admin";
+import {
+  CreateProduct,
+  Dashboard,
+  OrderList,
+  ProductList,
+  UpdateProduct,
+  UpdateUser,
+  UserList,
+} from "./components/Admin";
 import {
   ForgetPassword,
   Login,
@@ -21,7 +29,7 @@ import {
 } from "./components/Cart";
 import { Footer } from "./components/Common";
 import { NavBar } from "./components/Header";
-import { MyOrders, OrderDetails } from "./components/Order";
+import { MyOrders, OrderDetails, ProcessOrder } from "./components/Order";
 import { ScrollTop } from "./helper";
 import { Account, AllProducts, Auth, Cart, Home, ProductSingle } from "./pages";
 
@@ -51,6 +59,12 @@ export default function App() {
         <Route path="/*" element={<PrivateRoute isAdmin />}>
           <Route path="admin/dashboard" element={<Dashboard />} />
           <Route path="admin/products" element={<ProductList />} />
+          <Route path="admin/product/create" element={<CreateProduct />} />
+          <Route path="admin/product/update/:id" element={<UpdateProduct />} />
+          <Route path="admin/orders" element={<OrderList />} />
+          <Route path="admin/order/:id" element={<ProcessOrder />} />
+          <Route path="admin/users" element={<UserList />} />
+          <Route path="admin/user/update/:id" element={<UpdateUser />} />
         </Route>
 
         {/* Private Route  */}
@@ -63,6 +77,7 @@ export default function App() {
           <Route path="order/success" element={<OrderSuccess />} />
           <Route path="orders" element={<MyOrders />} />
           <Route path="order/:id" element={<OrderDetails />} />
+
           <Route
             path="process/payment"
             element={
