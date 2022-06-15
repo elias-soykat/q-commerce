@@ -29,7 +29,9 @@ export default function Modal({ toggle, displayModalHandler }) {
 
   const { user } = useSelector((state) => state.user);
 
-  const reviewSubmitHandler = () => {
+  const reviewSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log("button clicked");
     const myForm = new FormData();
     myForm.set("rating", star);
     myForm.set("comment", comment);
@@ -60,7 +62,10 @@ export default function Modal({ toggle, displayModalHandler }) {
       className="fixed left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-[#7d7799] bg-opacity-60"
     >
       <div id="child" className="transition-opacity">
-        <div className="flex w-full flex-col items-start justify-center rounded-md bg-white p-3">
+        <form
+          onSubmit={reviewSubmitHandler}
+          className="flex w-full flex-col items-start justify-center rounded-md bg-white p-3"
+        >
           <div className="flex items-start">
             <textarea
               className="border"
@@ -91,8 +96,8 @@ export default function Modal({ toggle, displayModalHandler }) {
           </div>
           <div className="flex">
             <button
-              type="button"
-              onClick={reviewSubmitHandler}
+              type="submit"
+              value="Submit"
               className="mr-4 flex justify-center rounded-md bg-gray-800 px-6 py-1 text-sm text-white"
             >
               Submit
@@ -104,7 +109,7 @@ export default function Modal({ toggle, displayModalHandler }) {
               Cancel
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
