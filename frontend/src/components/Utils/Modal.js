@@ -42,7 +42,7 @@ export default function Modal({ toggle, displayModalHandler }) {
 
   useEffect(() => {
     if (err) {
-      toast.error(err);
+      toast.error(err.message || err);
       dispatch(clearErrors());
     }
 
