@@ -91,6 +91,7 @@ export default function Modal({ toggle, displayModalHandler }) {
           </div>
           <div className="flex">
             <button
+              type="button"
               onClick={reviewSubmitHandler}
               className="mr-4 flex justify-center rounded-md bg-gray-800 px-6 py-1 text-sm text-white"
             >

@@ -94,7 +94,10 @@ export default function OrderList() {
                         <Link to={`/admin/order/${order._id}`} className="mr-2">
                           <EditIcon />
                         </Link>
-                        <button onClick={() => orderRemoveHandler(order._id)}>
+                        <button
+                          type="button"
+                          onClick={() => orderRemoveHandler(order._id)}
+                        >
                           <TrashIcon />
                         </button>
                       </td>
