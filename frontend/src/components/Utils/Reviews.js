@@ -1,4 +1,3 @@
-import React from "react";
 import { RightArrow } from "../../assets/svg";
 import { Button, Container, RatingStar, SectionHeader } from "../Common";
 
@@ -7,10 +6,10 @@ let data = [1, 2, 3];
 export default function Reviews() {
   return (
     <Container>
-      <div className="items-end justify-between sm:flex my-4 md:my-12">
+      <div className="my-8 items-end justify-between sm:flex md:my-16">
         <div className="max-w-xl">
           <SectionHeader>Read trusted reviews from our customers</SectionHeader>
-          <p className="max-w-lg mt-8 text-gray-500">
+          <p className="mt-8 max-w-lg text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
             praesentium natus sapiente commodi. Aliquid sunt tempore iste
             repellendus explicab placeat, autem
@@ -23,11 +22,11 @@ export default function Reviews() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:gap-6 mt-8 md:mt-10 sm:grid-cols-2 lg:grid-cols-3 mb-2 md:mb-6">
+      <div className="mt-8 mb-2 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-10 md:mb-6 md:gap-6 lg:grid-cols-3">
         {data.map((card) => (
           <blockquote
             key={card}
-            className="flex flex-col justify-between h-full p-10 bg-white"
+            className="flex h-full flex-col justify-between bg-white p-10"
           >
             <div>
               <div className="flex space-x-0.5 text-green-500">

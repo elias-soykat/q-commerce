@@ -97,12 +97,17 @@ export default function NavBar() {
                 >
                   Products
                 </NavLink>
-                <NavLink
-                  to="auth/login"
+                <button
+                  type="button"
+                  onClick={() =>
+                    toast.loading("This feature is coming soon", {
+                      duration: 3000,
+                    })
+                  }
                   className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:my-0  md:mr-12"
                 >
-                  Login
-                </NavLink>
+                  English / বাংলা
+                </button>
                 {user.isAuthenticated ? (
                   <DropDown {...user} />
                 ) : (
