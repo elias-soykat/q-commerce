@@ -1,9 +1,7 @@
-import React from "react";
 import Rating from "react-rating";
 import { Star, Unfilled } from "../../assets/svg";
 
 export default function ProductReview({ pro }) {
-  console.log(pro);
   return (
     <section>
       <div className="mx-auto max-w-screen-xl  py-12 px-4 md:py-20 md:px-12">

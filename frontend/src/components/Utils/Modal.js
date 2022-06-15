@@ -31,12 +31,16 @@ export default function Modal({ toggle, displayModalHandler }) {
 
   const reviewSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("button clicked");
+
+    if (!user) {
+      toast.error("Please login to review");
+    }
+
     const myForm = new FormData();
     myForm.set("rating", star);
     myForm.set("comment", comment);
     myForm.set("productId", id);
-    myForm.set("userImg", user.avatar.url);
+    myForm.set("userImg", user.avatar.url || "");
 
     dispatch(newReview(myForm));
     displayModalHandler("none");
