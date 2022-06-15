@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   CartIcon,
   CloseNavBar,
@@ -6,10 +9,7 @@ import {
   NavHamburger,
   SearchIcon,
 } from "../../assets/svg";
-import { Link, NavLink, useNavigate } from "react-router-dom";
 import { DropDown } from "../Utils";
-import { useSelector } from "react-redux";
-import toast, { Toaster } from "react-hot-toast";
 
 export default function NavBar() {
   const [toggle, setToggle] = useState(true);
@@ -44,23 +44,23 @@ export default function NavBar() {
   return (
     <>
       <Toaster />
-      <nav className="backdrop-blur-sm text bg-white/90 shadow z-50 fixed w-full top-0">
+      <nav className="text fixed top-0 z-50 w-full bg-white/90 shadow backdrop-blur-sm">
         <div className="container px-4 py-4">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <NavLink
                   to="/"
-                  className="text-xl font-semibold lg:text-2xl text-gray-800 "
+                  className="text-xl font-semibold text-gray-800 lg:text-2xl "
                 >
                   Q-Commerce
                 </NavLink>
 
-                <div className="hidden mx-10 md:block">
-                  <form className="flex items-center border border-gray-400 bg-white pr-4 rounded">
+                <div className="mx-10 hidden md:block">
+                  <form className="flex items-center rounded border border-gray-400 bg-white pr-4">
                     <input
                       type="text"
-                      className="w-full py-2 px-5 text-gray-700 bg-white text-sm rounded-md focus:outline-none"
+                      className="w-full rounded-md bg-white py-2 px-5 text-sm text-gray-700 focus:outline-none"
                       placeholder="Search.."
                       name="search"
                       onChange={(e) => setSearchKeyword(e.target.value)}
@@ -84,40 +84,22 @@ export default function NavBar() {
             </div>
 
             <div className={`items-center md:flex ${toggle && "hidden"}`}>
-              <div className="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1 items-center">
+              <div className="mt-2 flex flex-col items-center md:mx-1 md:mt-0 md:flex-row">
                 <NavLink
                   to="/"
-                  className="my-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
+                  className="my-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:my-0  md:mr-12"
                 >
                   Home
                 </NavLink>
                 <NavLink
-                  to="/password/update"
-                  className="my-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
-                >
-                  Update Password
-                </NavLink>
-                <NavLink
                   to="/products"
-                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
+                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:my-0  md:mr-12"
                 >
                   Products
                 </NavLink>
                 <NavLink
-                  to="/password/reset/token"
-                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
-                >
-                  Reset
-                </NavLink>
-                <NavLink
-                  to="/password/forget"
-                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
-                >
-                  Forget password
-                </NavLink>
-                <NavLink
                   to="auth/login"
-                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:mr-12  md:my-0"
+                  className="mb-5 text-sm text-gray-700 duration-300 hover:text-blue-600 md:my-0  md:mr-12"
                 >
                   Login
                 </NavLink>
@@ -126,16 +108,16 @@ export default function NavBar() {
                 ) : (
                   <NavLink
                     to="auth/login"
-                    className="mb-5 md:mr-12 md:my-0  text-sm duration-300 px-10 py-2.5 rounded font-medium text-white bg-gray-900 hover:bg-gray-600"
+                    className="mb-5 rounded bg-gray-900  px-10 py-2.5 text-sm font-medium text-white duration-300 hover:bg-gray-600 md:my-0 md:mr-12"
                   >
                     Login
                   </NavLink>
                 )}
               </div>
-              <div className="flex items-center justify-center py-2 -mx-1 md:mx-0">
+              <div className="-mx-1 flex items-center justify-center py-2 md:mx-0">
                 <Link to="/cart" className="relative">
                   {isCartLength > 0 && (
-                    <span className="absolute left-4 bottom-3 bg-black text-white px-1.5 py-0.5 text-xs rounded-full">
+                    <span className="absolute left-4 bottom-3 rounded-full bg-black px-1.5 py-0.5 text-xs text-white">
                       {isCartLength}
                     </span>
                   )}
@@ -154,7 +136,7 @@ export default function NavBar() {
 
                   <input
                     type="text"
-                    className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                    className="w-full rounded-md border bg-white py-2 pl-10 pr-4 text-gray-700 focus:outline-none focus:ring focus:ring-blue-300"
                     placeholder="Search"
                   />
                 </div>

@@ -57,7 +57,7 @@ export default function UserList() {
         <Sidebar />
         <div className="my-4 flex flex-col sm:my-0 md:ml-[300px]">
           <h3 className="my-10 text-center text-2xl font-medium sm:text-3xl">
-            All Products
+            All Users
           </h3>
           <table className="w-full text-left">
             <thead className="animate pulse h-12 rounded-lg bg-gray-800 text-white duration-200 hover:bg-gray-600">

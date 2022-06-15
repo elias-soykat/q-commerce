@@ -104,7 +104,7 @@ export default function UpdateProduct() {
         <Sidebar />
         <div className="my-4 flex flex-col sm:my-0 md:ml-[300px]">
           <h1 className="mt-10 text-center text-xl font-medium sm:text-2xl">
-            Create Product
+            Update Product
           </h1>
 
           <form

@@ -23,7 +23,7 @@ export default function Account() {
         } | Q - Commerce`}
       />
       {loading && <Loading />}
-      <div className="container mt-16 flex flex-wrap items-center justify-center">
+      <div className="container mt-16 flex flex-wrap items-center justify-center py-4">
         <div className="px-6 py-8 shadow-lg">
           <h3 className="py-5 text-2xl font-medium">My Profile</h3>
           <img width="25%" src={user?.avatar.url} alt="user" />
