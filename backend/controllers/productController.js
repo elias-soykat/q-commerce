@@ -163,55 +163,55 @@ exports.createProductReview = asyncHandler(async (req, res) => {
   res.status(200).json("Success");
 });
 
-// Get All Reviews of a product
-exports.getAllReviews = asyncHandler(async (req, res) => {
-  const product = await service.findById(req.query.id);
+// // Get All Reviews of a product
+// exports.getAllReviews = asyncHandler(async (req, res) => {
+//   const product = await service.findById(req.query.id);
 
-  if (!product) {
-    return res.status(404).json("That query product is not available");
-  }
+//   if (!product) {
+//     return res.status(404).json("That query product is not available");
+//   }
 
-  res.status(200).json(product.reviews);
-});
+//   res.status(200).json(product.reviews);
+// });
 
-// Delete Review
-exports.deleteReview = asyncHandler(async (req, res) => {
-  // productId vs reviewId
+// // Delete Review
+// exports.deleteReview = asyncHandler(async (req, res) => {
+//   // productId vs reviewId
 
-  // productId === the id of a product
-  // id === the id of a single review
+//   // productId === the id of a product
+//   // id === the id of a single review
 
-  const { productId, id } = req.query;
+//   const { productId, id } = req.query;
 
-  if (!productId || !id) {
-    return res.status(404).json("productId or id is not found!");
-  }
+//   if (!productId || !id) {
+//     return res.status(404).json("productId or id is not found!");
+//   }
 
-  const product = await service.findById(productId);
+//   const product = await service.findById(productId);
 
-  if (!product) {
-    return res.status(404).json("That query product is not available");
-  }
+//   if (!product) {
+//     return res.status(404).json("That query product is not available");
+//   }
 
-  const reviews = product.reviews.filter(
-    (rev) => rev._id.toString() !== id.toString()
-  );
+//   const reviews = product.reviews.filter(
+//     (rev) => rev._id.toString() !== id.toString()
+//   );
 
-  let avg = 0;
+//   let avg = 0;
 
-  reviews.forEach((rev) => {
-    avg += rev.rating;
-  });
+//   reviews.forEach((rev) => {
+//     avg += rev.rating;
+//   });
 
-  const ratings = avg / reviews.length || 0;
+//   const ratings = avg / reviews.length || 0;
 
-  const numOfReviews = reviews.length;
+//   const numOfReviews = reviews.length;
 
-  await service.findByIdAndUpdate(productId, {
-    reviews,
-    ratings,
-    numOfReviews,
-  });
+//   await service.findByIdAndUpdate(productId, {
+//     reviews,
+//     ratings,
+//     numOfReviews,
+//   });
 
-  res.status(200).json("Success");
-});
+//   res.status(200).json("Success");
+// });

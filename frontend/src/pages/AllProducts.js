@@ -38,10 +38,10 @@ export default function AllProducts() {
     }
 
     if (sort === "price-asc") {
-      const result = products.sort((a, b) => a.price - b.price) || [];
+      const result = products?.sort((a, b) => a.price - b.price) || [];
       setFilteredProducts([...result]);
     } else if (sort === "price-desc") {
-      const result = products.sort((a, b) => b.price - a.price) || [];
+      const result = products?.sort((a, b) => b.price - a.price) || [];
       setFilteredProducts([...result]);
     }
   }, [err, products, sort]);
@@ -191,6 +191,14 @@ export default function AllProducts() {
             ))}
           </div>
 
+          {products === undefined && (
+            <img
+              width="25%"
+              src={noProduct}
+              className="mt-12 flex items-center justify-center sm:mt-20"
+              alt="product"
+            />
+          )}
           <div className="my-6 flex items-center justify-center sm:my-12">
             {products?.length === 0 && !loading && (
               <img width="25%" src={noProduct} alt="product" />

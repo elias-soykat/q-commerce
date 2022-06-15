@@ -37,9 +37,9 @@ router.route("/product/:id").get(getProductDetails);
 
 router.route("/review").put(isAuthenticated, createProductReview);
 
-router
-  .route("/reviews")
-  .get(getAllReviews)
-  .delete(isAuthenticated, deleteReview);
+// router
+//   .route("/reviews")
+//   .get(getAllReviews)
+//   .delete(isAuthenticated, deleteReview);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -200,6 +200,7 @@ export default function CreateProduct() {
               <input
                 type="submit"
                 value="Create Product"
+                disabled={loading ? true : false}
                 className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gray-900 py-3 text-center text-sm font-medium text-white duration-500 hover:bg-gray-600 sm:text-base"
               />
             </div>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Star, Unfilled } from "../../assets/svg";
-import { newReview, NEW_REVIEW_RESET } from "../../redux/actions/productAction";
+import { newReview } from "../../redux/actions/productAction";
 import { clearErrors } from "../../redux/actions/userAction";
 
 export default function Modal({ toggle, displayModalHandler }) {
@@ -48,7 +48,7 @@ export default function Modal({ toggle, displayModalHandler }) {
 
     if (success) {
       toast.success("Review Successfully Submitted");
-      dispatch({ type: NEW_REVIEW_RESET });
+      dispatch({ type: "NEW_REVIEW_RESET" });
     }
   }, [dispatch, err, success]);
 

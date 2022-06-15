@@ -13,6 +13,7 @@ export default function Footer() {
     path !== "/admin/product/create" &&
     path !== "/admin/orders" &&
     path !== "/admin/users" &&
+    path !== "/admin/review" &&
     updatePage !== "update" &&
     orderPage !== "order";
 

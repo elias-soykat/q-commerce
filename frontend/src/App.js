@@ -49,6 +49,7 @@ export default function App() {
     <ScrollTop>
       <NavBar />
       <Routes>
+        <Route path="*" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductSingle />} />
         <Route path="/cart" element={<Cart />} />

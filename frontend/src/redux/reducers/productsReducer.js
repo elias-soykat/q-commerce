@@ -7,22 +7,18 @@ import {
   ALL_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
   DELETE_PRODUCT_REQUEST,
-  DELETE_PRODUCT_RESET,
   DELETE_PRODUCT_SUCCESS,
   NEW_PRODUCT_FAIL,
   NEW_PRODUCT_REQUEST,
-  NEW_PRODUCT_RESET,
   NEW_PRODUCT_SUCCESS,
   NEW_REVIEW_FAIL,
   NEW_REVIEW_REQUEST,
-  NEW_REVIEW_RESET,
   NEW_REVIEW_SUCCESS,
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   UPDATE_PRODUCT_FAIL,
   UPDATE_PRODUCT_REQUEST,
-  UPDATE_PRODUCT_RESET,
   UPDATE_PRODUCT_SUCCESS,
 } from "../actions/productAction";
 import { CLEAR_ERRORS } from "../actions/userAction";
@@ -107,7 +103,7 @@ export function newReviewReducer(state = {}, action) {
     case NEW_REVIEW_FAIL:
       return { ...state, loading: false, err: action.payload };
 
-    case NEW_REVIEW_RESET:
+    case "NEW_REVIEW_RESET":
       return { ...state, success: false };
 
     case CLEAR_ERRORS:
@@ -134,7 +130,7 @@ export const newProductReducer = (state = { product: {} }, action) => {
     case NEW_PRODUCT_FAIL:
       return { ...state, loading: false, err: action.payload };
 
-    case NEW_PRODUCT_RESET:
+    case "NEW_PRODUCT_RESET":
       return { ...state, success: false };
 
     case CLEAR_ERRORS:
@@ -165,10 +161,10 @@ export const productReducer = (state = {}, action) => {
     case UPDATE_PRODUCT_FAIL:
       return { ...state, loading: false, err: action.payload };
 
-    case DELETE_PRODUCT_RESET:
+    case "DELETE_PRODUCT_RESET":
       return { ...state, isDelete: false };
 
-    case UPDATE_PRODUCT_RESET:
+    case "UPDATE_PRODUCT_RESET":
       return {
         ...state,
         isUpdated: false,

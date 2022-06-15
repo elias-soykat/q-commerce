@@ -199,7 +199,7 @@ export const getUserDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(`/api/v1/admin/user/${id}`);
 
-    dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
+    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: USER_DETAILS_FAIL, payload: err.response.data });
   }
