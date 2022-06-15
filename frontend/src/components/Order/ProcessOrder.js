@@ -47,7 +47,7 @@ export default function ProcessOrder() {
 
   return (
     <section className="container my-20">
-      <MetaData title="Process Orders | Q Commerce " />
+      <MetaData title="Process Orders | Q Sneakers " />
       {loading && <Loading />}
       <div className="overflow-hidden">
         <Sidebar />

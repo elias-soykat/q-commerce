@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductDetails } from ".././redux/actions/productAction";
@@ -17,7 +17,7 @@ export default function ProductSingle() {
 
   return (
     <div>
-      <MetaData title={`${product.name || "Product"} | Q - Commerce`} />
+      <MetaData title={`${product.name || "Product"} | Q - Sneakers`} />
       {loading && <Loading />}
       {Object.keys(product).length === 0 ? (
         <ProductSkeleton />

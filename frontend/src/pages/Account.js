@@ -20,7 +20,7 @@ export default function Account() {
       <MetaData
         title={`${
           userName ? userName + "'s Profile" : "Profile"
-        } | Q - Commerce`}
+        } | Q - Sneakers`}
       />
       {loading && <Loading />}
       <div className="container mt-16 flex flex-wrap items-center justify-center py-4">

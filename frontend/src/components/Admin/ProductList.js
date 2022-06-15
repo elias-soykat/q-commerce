@@ -44,7 +44,7 @@ export default function ProductList() {
 
   return (
     <section className="container my-20">
-      <MetaData title="All Products | Q Commerce " />
+      <MetaData title="All Products | Q Sneakers " />
       {(loading || isLoading) && <Loading />}
       <div className={`${checkProduct && "overflow-auto"}`}>
         <Sidebar />

@@ -53,11 +53,11 @@ export default function NavBar() {
                   to="/"
                   className="text-xl font-semibold text-gray-800 lg:text-2xl "
                 >
-                  Q-Commerce
+                  Q-Sneakers
                 </NavLink>
 
                 <div className="mx-10 hidden md:block">
-                  <form className="flex items-center rounded border border-gray-400 bg-white pr-4">
+                  <form className="flex items-center rounded border border-gray-300 bg-white pr-4">
                     <input
                       type="text"
                       className="w-full rounded-md bg-white py-2 px-5 text-sm text-gray-700 focus:outline-none"

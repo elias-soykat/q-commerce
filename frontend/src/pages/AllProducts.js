@@ -50,7 +50,7 @@ export default function AllProducts() {
 
   return (
     <Container bg="bg-white">
-      <MetaData title={`${title} | Q - Commerce`} />
+      <MetaData title={`${title} | Q - Sneakers`} />
       {loading && <Loading />}
       <div className="my-16 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
         <div className="lg:sticky lg:top-36">

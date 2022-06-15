@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -49,19 +49,19 @@ export default function UpdatePassword() {
 
   return (
     <Container>
-      <div className="mt-16 mb-6 md:my-20 sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-5/12 mx-auto">
-        <MetaData title="Update Password | Q - Commerce" />
+      <div className="mx-auto mt-16 mb-6 sm:w-10/12 md:my-20 md:w-8/12 lg:w-6/12 xl:w-5/12">
+        <MetaData title="Update Password | Q - Sneakers" />
         {loading && <Loading />}
         <form
-          className="mt-8 bg-white px-4 py-5 sm:px-12 sm:py-14 rounded-md shadow"
+          className="mt-8 rounded-md bg-white px-4 py-5 shadow sm:px-12 sm:py-14"
           onSubmit={updatePasswordSubmit}
         >
-          <h2 className="text-2xl pt-8 sm:pt-0 pb-8 sm:pb-12 text-center font-medium">
+          <h2 className="pt-8 pb-8 text-center text-2xl font-medium sm:pt-0 sm:pb-12">
             Change Password
           </h2>
 
           {/* Old Password  */}
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="oldPassword">Old Password</Label>
             <div className="relative">
               <Input
@@ -76,7 +76,7 @@ export default function UpdatePassword() {
           </div>
 
           {/* New Password  */}
-          <div className="flex flex-col mb-7">
+          <div className="mb-7 flex flex-col">
             <Label f="newPassword">New Password</Label>
             <div className="relative">
               <Input
@@ -91,7 +91,7 @@ export default function UpdatePassword() {
           </div>
 
           {/* Confirm Password  */}
-          <div className="flex flex-col mb-7">
+          <div className="mb-7 flex flex-col">
             <Label f="confirmPassword">Confirm New Password</Label>
             <div className="relative">
               <Input
@@ -106,7 +106,7 @@ export default function UpdatePassword() {
           </div>
 
           <div className="flex items-center justify-end">
-            <a href="/" className="inline-flex text-xs sm:text-sm italic">
+            <a href="/" className="inline-flex text-xs italic sm:text-sm">
               Forgot Your Password ?
             </a>
           </div>
@@ -115,7 +115,7 @@ export default function UpdatePassword() {
             <input
               type="submit"
               value="CHANGE PASSWORD"
-              className="cursor-pointer w-full py-4 flex items-center justify-center font-bold text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gray-900 py-4 text-center font-bold text-white duration-500 hover:bg-gray-600"
             />
           </div>
         </form>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -43,7 +43,7 @@ export default function Shipping() {
   return (
     <Container>
       <div className="my-10 sm:my-12">
-        <MetaData title="Shipping Details | Q - Commerce" />
+        <MetaData title="Shipping Details | Q - Sneakers" />
 
         <CheckoutSteps step={1} />
         <form

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import simpleAvatar from "../../assets/avatar.png";
 import {
   EmailIcon,
   GoogleIcon,
   NameIcon,
   PasswordLock,
 } from "../../assets/svg";
-import { Input, Label } from "../Common";
 import { Loading, MetaData } from "../../helper";
 import { registerAction } from "../../redux/actions/userAction";
-import simpleAvatar from "../../assets/avatar.png";
-import toast from "react-hot-toast";
+import { Input, Label } from "../Common";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -67,24 +67,24 @@ export default function Register() {
   }, [err, isAuthenticated, navigate]);
 
   return (
-    <div className="min-h-screen flex mt-16 md:mt-20 xl:mt-10 2xl:mt-0 items-center justify-center bg-gray-100">
-      <MetaData title="Register | Q - Commerce" />
+    <div className="mt-16 flex min-h-screen items-center justify-center bg-gray-100 md:mt-20 xl:mt-10 2xl:mt-0">
+      <MetaData title="Register | Q - Sneakers" />
       {loading && <Loading />}
-      <div className="w-full max-w-lg flex flex-col shadow-md px-6 md:px-12 lg:px-14 py-6 md:py-10 lg:py-12 rounded-md bg-white">
-        <button className="flex items-center justify-center mb-2  rounded py-3 bg-gray-100">
+      <div className="flex w-full max-w-lg flex-col rounded-md bg-white px-6 py-6 shadow-md md:px-12 md:py-10 lg:px-14 lg:py-12">
+        <button className="mb-2 flex items-center justify-center  rounded bg-gray-100 py-3">
           <GoogleIcon />
           <h3 className="ml-4 font-medium">Login with Google</h3>
         </button>
         <div className="relative mt-8 h-px bg-gray-400">
-          <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
-            <span className="bg-white px-4 text-xs text-gray-500 uppercase">
+          <div className="absolute left-0 top-0 -mt-2 flex w-full justify-center">
+            <span className="bg-white px-4 text-xs uppercase text-gray-500">
               Or Login With Email
             </span>
           </div>
         </div>
         <form className="mt-8" onSubmit={registerSubmitHandler}>
           {/* Name  */}
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="name">Name</Label>
             <div className="relative">
               <Input
@@ -99,7 +99,7 @@ export default function Register() {
           </div>
 
           {/* Email  */}
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="email">E-Mail Address</Label>
             <div className="relative">
               <Input
@@ -115,7 +115,7 @@ export default function Register() {
 
           {/* Password  */}
 
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="password">Password</Label>
             <div className="relative">
               <Input
@@ -131,18 +131,18 @@ export default function Register() {
 
           {/* File  */}
 
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="avatar">Upload Avatar</Label>
-            <div className="flex justify-between mt-1">
+            <div className="mt-1 flex justify-between">
               <img width="11%" src={avatar} alt="user" />
-              <div className="relative duration-500 hover:bg-gray-100 rounded-lg">
+              <div className="relative rounded-lg duration-500 hover:bg-gray-100">
                 <input
                   type="file"
                   onChange={handleInputChange}
                   name="avatar"
                   accept="image/*"
                   required
-                  className="text-sm placeholder:italic placeholder-gray-500 pl-11 rounded-lg w-full py-2 focus:outline-none focus:border-gray-600"
+                  className="w-full rounded-lg py-2 pl-11 text-sm placeholder-gray-500 placeholder:italic focus:border-gray-600 focus:outline-none"
                   placeholder="Your File"
                 />
               </div>
@@ -152,7 +152,7 @@ export default function Register() {
           <div className="flex items-center justify-end">
             <Link
               to="/password/forget"
-              className="inline-flex text-xs sm:text-sm italic"
+              className="inline-flex text-xs italic sm:text-sm"
             >
               Forgot Your Password ?
             </Link>
@@ -162,14 +162,14 @@ export default function Register() {
             <input
               type="submit"
               value="Register"
-              className="cursor-pointer w-full py-3 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gray-900 py-3 text-center text-sm font-medium text-white duration-500 hover:bg-gray-600 sm:text-base"
             />
           </div>
         </form>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <Link
             to="/auth/login"
-            className="pt-1 font-medium text-xs text-center"
+            className="pt-1 text-center text-xs font-medium"
           >
             Already have an account ?
           </Link>

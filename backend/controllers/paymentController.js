@@ -7,7 +7,7 @@ exports.processPayment = asyncHandler(async (req, res) => {
     amount: req.body.amount,
     currency: "usd",
     metadata: {
-      company: "Q-Commerce",
+      company: "Q-Sneakers",
     },
   });
 

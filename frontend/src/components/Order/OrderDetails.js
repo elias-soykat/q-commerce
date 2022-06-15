@@ -23,7 +23,7 @@ export default function OrderDetails() {
   return (
     <section className="container my-20 px-3 sm:px-0">
       {loading && <Loading />}
-      <MetaData title="Order Details | Q Commerce" />
+      <MetaData title="Order Details | Q Sneakers" />
 
       {loading ? (
         <SkeletonLoad />

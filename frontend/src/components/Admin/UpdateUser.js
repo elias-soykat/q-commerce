@@ -69,7 +69,7 @@ export default function UpdateUser() {
 
   return (
     <section className="container my-20">
-      <MetaData title="Update User | Q Commerce " />
+      <MetaData title="Update User | Q Sneakers " />
       {(loading || updateLoading) && <Loading />}
       <div className="overflow-hidden">
         <Sidebar />

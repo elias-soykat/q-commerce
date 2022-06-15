@@ -1,7 +1,7 @@
 export const categoryList = [
   {
     id: 0,
-    title: "Laptop",
+    title: "Sneaker",
     type: "radio",
   },
   {
@@ -44,7 +44,7 @@ export const ratingList = [
 ];
 
 export const productCategories = [
-  "Laptop",
+  "Select Category",
   "Mobile",
   "Computer",
   "TV",
@@ -53,7 +53,7 @@ export const productCategories = [
   "Headphone",
   "Earphone",
   "Watch",
-  "Tablet",
+  "Sneaker",
   "Printer",
   "Accessories",
   "Software",

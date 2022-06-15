@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -46,17 +46,17 @@ export default function Login() {
   }, [dispatch, err, isAuthenticated, navigate, redirect]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <MetaData title="Login | Q - Commerce" />
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <MetaData title="Login | Q - Sneakers" />
       {loading && <Loading />}
-      <div className="w-full max-w-lg flex flex-col shadow-md px-6 md:px-12 lg:px-14 py-8 md:py-12 lg:py-14 rounded-md bg-white">
-        <button className="flex items-center justify-center my-8  rounded py-3 bg-gray-100">
+      <div className="flex w-full max-w-lg flex-col rounded-md bg-white px-6 py-8 shadow-md md:px-12 md:py-12 lg:px-14 lg:py-14">
+        <button className="my-8 flex items-center justify-center  rounded bg-gray-100 py-3">
           <GoogleIcon />
           <h3 className="ml-4 font-medium">Login with Google</h3>
         </button>
         <div className="relative mt-8 h-px bg-gray-400">
-          <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
-            <span className="bg-white px-4 text-xs text-gray-500 uppercase">
+          <div className="absolute left-0 top-0 -mt-2 flex w-full justify-center">
+            <span className="bg-white px-4 text-xs uppercase text-gray-500">
               Or Login With Email
             </span>
           </div>
@@ -64,7 +64,7 @@ export default function Login() {
         <form className="mt-10" onSubmit={loginSubmitHandler}>
           {/* Email  */}
 
-          <div className="flex flex-col mb-7">
+          <div className="mb-7 flex flex-col">
             <Label f="email">E-Mail Address</Label>
             <div className="relative">
               <Input
@@ -80,7 +80,7 @@ export default function Login() {
 
           {/* Password  */}
 
-          <div className="flex flex-col mb-7">
+          <div className="mb-7 flex flex-col">
             <Label f="password">Password</Label>
             <div className="relative">
               <Input
@@ -94,11 +94,11 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="flex items-center -mt-4">
-            <div className="flex ml-auto">
+          <div className="-mt-4 flex items-center">
+            <div className="ml-auto flex">
               <Link
                 to="/password/forget"
-                className="inline-flex text-xs sm:text-sm italic pt-2"
+                className="inline-flex pt-2 text-xs italic sm:text-sm"
               >
                 Forgot Your Password ?
               </Link>
@@ -109,14 +109,14 @@ export default function Login() {
             <input
               type="submit"
               value="Login"
-              className="cursor-pointer w-full py-3 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gray-900 py-3 text-center text-sm font-medium text-white duration-500 hover:bg-gray-600 sm:text-base"
             />
           </div>
         </form>
-        <div className="flex justify-center items-center mt-6">
+        <div className="mt-6 flex items-center justify-center">
           <Link
             to="/auth/register"
-            className="pt-1 font-medium text-xs text-center"
+            className="pt-1 text-center text-xs font-medium"
           >
             You don't have an account ?
           </Link>

@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   return (
     <section className="container my-20">
-      <MetaData title="Dashboard | Q Commerce " />
+      <MetaData title="Dashboard | Q Sneakers " />
       <div className="overflow-hidden">
         <Sidebar />
         <div className="my-4 flex flex-col sm:my-0 md:ml-[300px]">

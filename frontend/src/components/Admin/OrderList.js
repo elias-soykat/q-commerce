@@ -54,7 +54,7 @@ export default function OrderList() {
 
   return (
     <section className="container my-20">
-      <MetaData title="All Orders | Q Commerce " />
+      <MetaData title="All Orders | Q Sneakers " />
       {(loading || isLoading) && <Loading />}
       <div className={`${checkOrder && "overflow-auto"}`}>
         <Sidebar />

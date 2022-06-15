@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { EmailIcon, NameIcon } from "../../assets/svg";
 import { Loading, MetaData } from "../../helper";
-import { Container, Input, Label } from "../Common";
 import {
   clearErrors,
   loadUserAction,
   updateProfile,
   UPDATE_PROFILE_RESET,
 } from "../../redux/actions/userAction";
+import { Container, Input, Label } from "../Common";
 
 export default function UpdateProfile() {
   const dispatch = useDispatch();
@@ -72,20 +72,20 @@ export default function UpdateProfile() {
 
   return (
     <Container>
-      <div className="mt-16 mb-6 md:my-20 sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-5/12 mx-auto">
-        <MetaData title="Update Profile | Q - Commerce" />
+      <div className="mx-auto mt-16 mb-6 sm:w-10/12 md:my-20 md:w-8/12 lg:w-6/12 xl:w-5/12">
+        <MetaData title="Update Profile | Q - Sneakers" />
         {loading && <Loading />}
         <form
-          className="mt-8 bg-white px-4 py-5 sm:px-12 sm:py-14 rounded-md shadow"
+          className="mt-8 rounded-md bg-white px-4 py-5 shadow sm:px-12 sm:py-14"
           onSubmit={updateProfileSubmit}
         >
-          <h2 className="text-2xl pt-8 sm:pt-0 pb-8 sm:pb-12 text-center font-medium">
+          <h2 className="pt-8 pb-8 text-center text-2xl font-medium sm:pt-0 sm:pb-12">
             Update Profile
           </h2>
 
           {/* Name  */}
 
-          <div className="flex flex-col mb-6">
+          <div className="mb-6 flex flex-col">
             <Label f="name">Name</Label>
             <div className="relative">
               <Input
@@ -101,7 +101,7 @@ export default function UpdateProfile() {
 
           {/* Email  */}
 
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="email">E-Mail Address</Label>
             <div className="relative">
               <Input
@@ -116,17 +116,17 @@ export default function UpdateProfile() {
           </div>
 
           {/* File  */}
-          <div className="flex flex-col mb-5">
+          <div className="mb-5 flex flex-col">
             <Label f="avatar">Avatar</Label>
-            <div className="flex justify-between mt-1">
+            <div className="mt-1 flex justify-between">
               <img width="11%" src={avatar} alt="user" />
-              <div className="relative duration-500 hover:bg-gray-100 rounded-lg">
+              <div className="relative rounded-lg duration-500 hover:bg-gray-100">
                 <input
                   type="file"
                   onChange={handleInputChange}
                   name="avatar"
                   accept="image/*"
-                  className="text-sm placeholder:italic placeholder-gray-500 pl-11 rounded-lg w-full py-2 focus:outline-none focus:border-gray-600"
+                  className="w-full rounded-lg py-2 pl-11 text-sm placeholder-gray-500 placeholder:italic focus:border-gray-600 focus:outline-none"
                   placeholder="Your File"
                 />
               </div>
@@ -136,7 +136,7 @@ export default function UpdateProfile() {
           <div className="flex items-center justify-end">
             <a
               href="/"
-              className="inline-flex text-xs sm:text-sm italic border-b"
+              className="inline-flex border-b text-xs italic sm:text-sm"
             >
               Forgot Your Password ?
             </a>
@@ -146,7 +146,7 @@ export default function UpdateProfile() {
             <input
               type="submit"
               value="Update Profile"
-              className="cursor-pointer w-full py-2.5 flex items-center justify-center text-sm sm:text-base font-medium text-center duration-500 rounded-md text-white bg-gray-900 hover:bg-gray-600"
+              className="flex w-full cursor-pointer items-center justify-center rounded-md bg-gray-900 py-2.5 text-center text-sm font-medium text-white duration-500 hover:bg-gray-600 sm:text-base"
             />
           </div>
         </form>

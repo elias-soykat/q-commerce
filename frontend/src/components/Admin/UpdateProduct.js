@@ -98,7 +98,7 @@ export default function UpdateProduct() {
 
   return (
     <section className="container my-20">
-      <MetaData title="Update Product | Q Commerce " />
+      <MetaData title="Update Product | Q Sneakers " />
       {loading && <Loading />}
       <div className="overflow-hidden">
         <Sidebar />

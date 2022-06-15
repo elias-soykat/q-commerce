@@ -102,7 +102,7 @@ export default function Payment() {
 
   return (
     <Container>
-      <MetaData title="Payment | Q-Commerce" />
+      <MetaData title="Payment | Q-Sneakers" />
       <CheckoutSteps step={3} />
 
       <div className="min-w-screen flex items-center justify-center pb-24 pt-6 sm:pt-8">

@@ -9,17 +9,15 @@
   background: transparent; /* make scrollbar transparent */
 }
 
-.demo {
-  background-color: #f9f9f9;
-  width: 100%;
-  padding: 2rem;
-  box-shadow: 0px 1px 3px rgb(0 0 0 / 10%);
-  margin: 2rem 0 3rem;
-  border-radius: 0.25rem;
+@layer components {
+  .b {
+    @apply border border-gray-600;
+  }
 }
 
-@media (max-width: 767.98px) {
-  .demo {
-    padding: 1rem;
-  }
+.carousel {
+  display: inline-flex;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* For Firefox */
 }

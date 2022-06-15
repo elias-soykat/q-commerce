@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import Rating from "react-rating";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import {
   Star,
   Unfilled,
 } from "../../assets/svg";
+import { Carousel } from "../../helper";
 import { addItemsCart } from "../../redux/actions/cartAction";
 import { Modal } from "../Utils";
 
@@ -48,18 +49,10 @@ export default function ProductDetails({ pro, id }) {
   const displayModalHandler = (status) => setToggle(status);
 
   return (
-    <section className="mt-28 sm:mt-40">
+    <section className="mt-24 sm:mt-32">
       <div className="mx-auto max-w-screen-xl px-4 md:px-12">
-        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-14">
-          <div className="">
-            <img
-              alt="product"
-              className="rounded-lg object-cover object-center"
-              style={{ maxHeight: "450px", minHeight: "400px" }}
-              src={images[0]?.url}
-            />
-          </div>
-
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-16">
+          <Carousel images={images} />
           <div className="">
             <div className="flex justify-between">
               <div className="max-w-[35ch]">

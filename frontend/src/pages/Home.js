@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProducts } from ".././redux/actions/productAction";
 import { Banner } from "../components/Header";
@@ -13,7 +13,7 @@ export default function Home() {
   }, [dispatch]);
   return (
     <>
-      <MetaData title="Home | Q - Commerce" />
+      <MetaData title="Home | Q - Sneakers" />
       <Banner />
       <FreeDelivery />
       <Products />

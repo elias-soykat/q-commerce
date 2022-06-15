@@ -75,7 +75,7 @@ export default function CreateProduct() {
 
   return (
     <section className="container my-20">
-      <MetaData title="Add Product | Q Commerce " />
+      <MetaData title="Add Product | Q Sneakers " />
       {loading && <Loading />}
       <div className="overflow-hidden">
         <Sidebar />

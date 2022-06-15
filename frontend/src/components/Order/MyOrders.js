@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ export default function MyOrders() {
 
   return (
     <section className="container">
-      <MetaData title={` ${user.name}'s Orders | Q Commerce`} />
+      <MetaData title={` ${user.name}'s Orders | Q Sneakers`} />
       {loading && <Loading />}
 
       <div className={`my-24 overflow-x-auto py-24 ${loading && "my-32"}`}>

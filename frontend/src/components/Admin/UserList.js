@@ -51,7 +51,7 @@ export default function UserList() {
 
   return (
     <section className="container my-20">
-      <MetaData title="All Users | Q Commerce " />
+      <MetaData title="All Users | Q Sneakers " />
       {(loading || deleteLoading) && <Loading />}
       <div className={`${checkUsers && "overflow-auto"}`}>
         <Sidebar />
