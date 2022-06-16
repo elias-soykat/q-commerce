@@ -14,7 +14,7 @@ export default function Login() {
   const { isAuthenticated, loading, err } = useSelector((state) => state.user);
 
   const [login, setLogin] = useState({
-    email: "user@gmail.com / admin@gmail.com",
+    email: "user@gmail.com",
     password: "123456",
   });
 
@@ -76,6 +76,9 @@ export default function Login() {
                 onChange={handleInputChange}
               />
             </div>
+            <small className="pt-1.5 font-normal italic">
+              for admin : admin@gmail.com
+            </small>
           </div>
 
           {/* Password  */}
