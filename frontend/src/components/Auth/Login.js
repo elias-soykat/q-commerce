@@ -14,8 +14,8 @@ export default function Login() {
   const { isAuthenticated, loading, err } = useSelector((state) => state.user);
 
   const [login, setLogin] = useState({
-    email: "",
-    password: "",
+    email: "user@gmail.com / admin@gmail.com",
+    password: "123456",
   });
 
   const handleInputChange = (e) => {
