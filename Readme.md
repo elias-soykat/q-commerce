@@ -55,6 +55,8 @@ Full-Stack Ecommerce with Admin Dashboard & Stripe Payment Gateway.
 - Admin: List Review of Product | Delete Review
 - Stock Management: Decrease stock of product when shipped
 
+</br>
+
 <table>
   <tr>
     <td><img src="https://raw.githubusercontent.com/elias-soykat/q-commerce/master/data/homepage.png" alt="mockup" /></td>
