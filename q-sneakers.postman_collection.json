@@ -1,0 +1,513 @@
+{
+	"info": {
+		"_postman_id": "f6c43093-5f37-40c7-96a8-bcb1f95d856f",
+		"name": "q-sneakers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17753606"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create a product - Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"product 2\",\n    \"price\": 300,\n    \"description\": \"This is a sample first product\",\n    \"category\": \"Laptop\",\n    \"images\": {\n        \"public_id\": \"sample image\",\n        \"url\": \"sample url\"\n    },\n    \"ratings\": 3.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/product/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/v1/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get product details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/v1/product/6257ab2418bb9eef5a0cb6bb"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a product - Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"product 3\",\n    \"price\": 2000,\n    \"description\": \"This is a sample first product\",\n    \"category\": \"Layptop\",\n    \"images\": {\n        \"public_id\": \"sample image\",\n        \"url\": \"sample url\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/product/6260f42cbdd71e545ece853f"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a product - Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"product 3\",\n    \"price\": 2000,\n    \"description\": \"This is a sample first product\",\n    \"category\": \"Layptop\",\n    \"images\": {\n        \"public_id\": \"sample image\",\n        \"url\": \"sample url\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/product/6257ab2418bb9eef5a0cb6bb"
+					},
+					"response": []
+				},
+				{
+					"name": "Give product review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"productId\": \"625af2688df1f89369c21245\",\n\"comment\": \"new one reviews\",\n\"rating\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/review"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all reveiws",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews?id=625af2688df1f89369c21245",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "625af2688df1f89369c21245"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete reveiws",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews?productId=625af2688df1f89369c21245&id=625bd3f59f2f8a082541d439",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "625af2688df1f89369c21245"
+								},
+								{
+									"key": "id",
+									"value": "625bd3f59f2f8a082541d439"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Search using product name ==> products?keyword=product 1\n\nsearch product category ===> products?category=Mobile\n\nsearch name and category ==> products?product 1&category=Mobile"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get user details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"eliasmd624@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"11753388\",\n    \"confirmPassword\": \"11753388\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/password/update"
+					},
+					"response": []
+				},
+				{
+					"name": "Update profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"11753388\",\n    \"confirmPassword\": \"11753388\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/user/update"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users -- Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"11753388\",\n    \"confirmPassword\": \"11753388\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get single user -- Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"11753388\",\n    \"confirmPassword\": \"11753388\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/user/625abe96d5c6d2442c7f0c2d"
+					},
+					"response": []
+				},
+				{
+					"name": "User role update -- Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"11753388\",\n    \"confirmPassword\": \"11753388\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/user/62597aa36392aafd25f660a9"
+					},
+					"response": []
+				},
+				{
+					"name": "User delete --  Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"11753388\",\n    \"confirmPassword\": \"11753388\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/user/625aeb9740c87b7d40a091fd"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Forget passwrod",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"eliasmd624@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/password/forget"
+					},
+					"response": []
+				},
+				{
+					"name": "Register user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"018\",\n    \"email\": \"john2@gmail.com\",\n    \"password\": \"123456\",\n    \"file\": \"elias\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john1@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john5@gmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"eliasmd624@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/password/reset/48db19a5a1b61172145cb0a6a0148ea4372e75a5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create a order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemsPrice\": 200,\n    \"taxPrice\": 36,\n    \"shippingPrice\": 100,\n    \"totalPrice\": 36010,\n    \"orderItems\": [\n        {\n            \"product\": \"625d6d4394a72329e096835b\",\n            \"name\": \"product 1\",\n            \"price\": 1200,\n            \"image\": \"sample image\",\n            \"quantity\": 1\n        }\n    ],\n    \"shippingInfo\": {\n        \"address\": \"202 Loas anels\",\n        \"city\": \"La\",\n        \"state\": \"Dhaka\",\n        \"country\": \"Bangladesh\",\n        \"pinCode\": 11111,\n        \"phoneNo\": 123456789\n    },\n    \"paymentInfo\": {\n        \"id\": \"sample payment paymentInfo\",\n        \"status\": \"success\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/order/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Get logged user order / my order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemsPrice\": 200,\n    \"taxPrice\": 36,\n    \"shippingPrice\": 100,\n    \"totalPrice\": 36010,\n    \"orderItems\": [\n        {\n            \"product\": \"6257ab2418bb9eef5a0cb6bb\",\n            \"name\": \"product 1\",\n            \"price\": 1200,\n            \"image\": \"sample image\",\n            \"quantity\": 1\n        }\n    ],\n    \"shippingInfo\": {\n        \"address\": \"202 Loas anels\",\n        \"city\": \"La\",\n        \"state\": \"Dhaka\",\n        \"country\": \"Bangladesh\",\n        \"pinCode\": 11111,\n        \"phoneNo\": 123456789\n    },\n    \"paymentInfo\": {\n        \"id\": \"sample payment paymentInfo\",\n        \"status\": \"success\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/orders/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all orders -- Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemsPrice\": 200,\n    \"taxPrice\": 36,\n    \"shippingPrice\": 100,\n    \"totalPrice\": 36010,\n    \"orderItems\": [\n        {\n            \"product\": \"6257ab2418bb9eef5a0cb6bb\",\n            \"name\": \"product 1\",\n            \"price\": 1200,\n            \"image\": \"sample image\",\n            \"quantity\": 1\n        }\n    ],\n    \"shippingInfo\": {\n        \"address\": \"202 Loas anels\",\n        \"city\": \"La\",\n        \"state\": \"Dhaka\",\n        \"country\": \"Bangladesh\",\n        \"pinCode\": 11111,\n        \"phoneNo\": 123456789\n    },\n    \"paymentInfo\": {\n        \"id\": \"sample payment paymentInfo\",\n        \"status\": \"success\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Update order status -- Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Delivered\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/order/625d7062185d1f9e7c5ab5fc"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order -- Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Delivered\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/api/v1/admin/order/625c362b1eff7389518a197d"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
