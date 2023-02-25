@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PasswordLock } from "../../assets/svg";
 import { Loading, MetaData } from "../../helper";
 import {
@@ -106,9 +106,12 @@ export default function UpdatePassword() {
           </div>
 
           <div className="flex items-center justify-end">
-            <a href="/" className="inline-flex text-xs italic sm:text-sm">
+            <Link
+              to="/password/forget"
+              className="inline-flex pt-2 text-xs italic sm:text-sm"
+            >
               Forgot Your Password ?
-            </a>
+            </Link>
           </div>
 
           <div className="my-6">

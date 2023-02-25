@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CLEAR_CART_ITEM } from "./cartAction";
 import { CLEAR_ERRORS } from "./userAction";
 
 export const CREATE_ORDER_REQUEST = "CREATE_ORDER_REQUEST";
@@ -112,6 +113,11 @@ export const getOrderDetails = (id) => async (dispatch) => {
   } catch (err) {
     dispatch({ type: ORDER_DETAILS_FAIL, payload: err.response.data });
   }
+};
+
+// cart clear after order
+export const clearCart = () => async (dispatch) => {
+  dispatch({ type: CLEAR_CART_ITEM });
 };
 
 // Clearing Errors

@@ -6,6 +6,8 @@ export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
 
 export const SAVE_SHIPPING_INFO = "SAVE_SHIPPING_INFO";
 
+export const CLEAR_CART_ITEM = "CLEAR_CART_ITEM";
+
 // Add to cart
 export const addItemsCart = (id, quantity) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/v1/product/${id}`);

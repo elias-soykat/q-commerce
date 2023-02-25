@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CreditCard } from "../../assets/svg";
 import { MetaData } from "../../helper";
-import { clearErrors, createOrder } from "../../redux/actions/orderAction";
+import { clearCart, clearErrors, createOrder } from "../../redux/actions/orderAction";
 import { Container } from "../Common";
 import { CheckoutSteps } from "../Utils";
 
@@ -49,7 +49,12 @@ export default function Payment() {
         config
       );
 
+
       const client_secret = data.client_secret;
+
+      if(client_secret) {
+        dispatch(clearCart())
+      }
 
       if (!stripe || !elements) return;
 

@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  CLEAR_CART_ITEM,
   REMOVE_CART_ITEM,
   SAVE_SHIPPING_INFO,
 } from "../actions/cartAction";
@@ -39,6 +40,12 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         shippingInfo: action.payload,
+      };
+
+    case CLEAR_CART_ITEM:
+      return {
+        ...state,
+        cartItems: [],
       };
 
     default:

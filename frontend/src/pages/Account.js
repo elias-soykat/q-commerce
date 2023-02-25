@@ -23,14 +23,16 @@ export default function Account() {
         } | Q - Sneakers`}
       />
       {loading && <Loading />}
-      <div className="container mt-16 flex flex-wrap items-center justify-center py-4">
+      <div className="container mt-16 flex flex-wrap items-center justify-center py-10">
         <div className="px-6 py-8 shadow-lg">
-          <h3 className="py-5 text-2xl font-medium">My Profile</h3>
+          <h4 className="py-5 text-xl font-medium text-gray-700">
+            {user?.name}'s Profile
+          </h4>
           <img width="25%" src={user?.avatar.url} alt="user" />
           <br />
-          <h1 className="mt-2 text-lg font-medium sm:text-xl md:text-2xl">
+          <h5 className="mt-2 text-lg font-medium sm:text-xl md:text-2xl">
             {user?.name}
-          </h1>
+          </h5>
           <p className="mt-1 mb-6 font-medium text-gray-500">
             Software Developer
           </p>
