@@ -42,9 +42,11 @@ export default function ForgetPassword() {
           className="mt-8 rounded-md bg-white px-4 py-5 shadow sm:px-12 sm:py-14"
           onSubmit={forgetPasswordSubmit}
         >
-          <h2 className="pt-8 pb-8 text-center text-2xl font-medium sm:pt-0 sm:pb-10">
-            Forget Password
-          </h2>
+          <Link to="/hello">
+            <h2 className="pt-8 pb-8 text-center text-2xl font-medium sm:pt-0 sm:pb-10">
+              Forget Password
+            </h2>
+          </Link>
 
           {message && (
             <div className="mb-6 rounded-sm border-l-4 border-green-700 bg-green-200 py-3 pl-4 text-green-900 sm:mb-8">
