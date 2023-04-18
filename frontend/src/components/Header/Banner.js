@@ -1,5 +1,6 @@
 import bannerImg from "../../assets/header.jpg";
 import { RightArrow } from "../../assets/svg";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   return (
@@ -28,9 +29,13 @@ export default function Banner() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">
-            <button className="flex w-full rounded-md bg-gray-600 px-7 py-5 text-center   text-sm font-medium text-white duration-500 hover:bg-gray-500 sm:w-auto md:mx-0 md:w-auto">
+           
+<Link to="/path/to/page" className="no-underline">
+  <button className="flex w-full rounded-md bg-gray-600 px-7 py-5 text-center   text-sm font-medium text-white duration-500 hover:bg-gray-500 sm:w-auto md:mx-0 md:w-auto">
               Get Started &nbsp; <RightArrow />
             </button>
+</Link>
+
 
             <button
               type="button"
