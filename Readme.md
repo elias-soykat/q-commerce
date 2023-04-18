@@ -2,7 +2,7 @@
 
 Full-Stack Ecommerce with Admin Dashboard & Stripe Payment Gateway.
 
-[Visit Now](https://q-sneakers.herokuapp.com/) 🚀
+[Visit Now](https://q-sneakers.onrender.com/) 🚀
 
 ## 🖥️ Tech Stack
 
