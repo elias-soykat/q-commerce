@@ -13,6 +13,7 @@ import { Loading, MetaData } from "../../helper";
 import { registerAction } from "../../redux/actions/userAction";
 import { Input, Label } from "../Common";
 
+
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -71,7 +72,14 @@ export default function Register() {
       <MetaData title="Register | Elite - Sneakers" />
       {loading && <Loading />}
       <div className="flex w-full max-w-lg flex-col rounded-md bg-white px-6 py-6 shadow-md md:px-12 md:py-10 lg:px-14 lg:py-12">
-        <button className="mb-2 flex items-center justify-center  rounded bg-gray-100 py-3">
+        <button
+          onClick={() =>
+            toast.loading("This feature is coming soon", {
+              duration: 3000,
+            })
+          }
+          className="mb-2 flex items-center justify-center  rounded bg-gray-100 py-3"
+        >
           <GoogleIcon />
           <h3 className="ml-4 font-medium">Login with Google</h3>
         </button>
