@@ -16,7 +16,7 @@ export default function Cart() {
 
   return (
     <div className="container my-16 sm:mt-28">
-      <MetaData title="Cart | Q - Sneakers" />
+      <MetaData title="Cart | Elite - Sneakers" />
 
       {cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center pt-10 sm:py-14">

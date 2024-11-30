@@ -53,7 +53,7 @@ export default function NavBar() {
                   to="/"
                   className="text-xl font-semibold text-gray-800 lg:text-2xl "
                 >
-                  Q-Sneakers
+                  ES
                 </NavLink>
 
                 <div className="mx-10 hidden md:block">

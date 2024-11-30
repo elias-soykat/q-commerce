@@ -5,10 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { EmailIcon, NameIcon } from "../../assets/svg";
 import { Loading, MetaData } from "../../helper";
 import {
-  clearErrors,
-  loadUserAction,
-  updateProfile,
-  UPDATE_PROFILE_RESET,
+    clearErrors,
+    loadUserAction,
+    UPDATE_PROFILE_RESET,
+    updateProfile,
 } from "../../redux/actions/userAction";
 import { Container, Input, Label } from "../Common";
 
@@ -73,7 +73,7 @@ export default function UpdateProfile() {
   return (
     <Container>
       <div className="mx-auto mt-16 mb-6 sm:w-10/12 md:my-20 md:w-8/12 lg:w-6/12 xl:w-5/12">
-        <MetaData title="Update Profile | Q - Sneakers" />
+        <MetaData title="Update Profile | Elite - Sneakers" />
         {loading && <Loading />}
         <form
           className="mt-8 rounded-md bg-white px-4 py-5 shadow sm:px-12 sm:py-14"

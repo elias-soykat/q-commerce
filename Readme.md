@@ -1,8 +1,8 @@
-# Q-Sneakers (MERN)
+# elite-sneakers (MERN)
 
 Full-Stack Ecommerce with Admin Dashboard & Stripe Payment Gateway.
 
-[Visit Now](https://q-sneakers.onrender.com/) 🚀
+[Visit Now](https://elite-sneakers.onrender.com/) 🚀
 
 ## 🖥️ Tech Stack
 
@@ -55,7 +55,6 @@ Full-Stack Ecommerce with Admin Dashboard & Stripe Payment Gateway.
 - Admin: List Review of Product | Delete Review
 - Stock Management: Decrease stock of product when shipped
 
-
 </br>
 
 <table>
@@ -71,23 +70,19 @@ Full-Stack Ecommerce with Admin Dashboard & Stripe Payment Gateway.
 
 </br>
 
-
 ### To Run this application
 
-```git clone git@github.com:elias-soykat/q-sneakers.git```
+`git clone git@github.com:elias-soykat/elite-sneakers.git`
 <br/><br/>
-```cd Q-Sneakers```
+`cd elite-sneakers`
 <br/><br/>
-```npm i```
+`npm i`
 <br/><br/>
-```npm run build```
+`npm run build`
 <br/><br/>
-```npm run dev```
-
-
+`npm run dev`
 
 </br>
-
 
 <h2>📬 Contact</h2>
 

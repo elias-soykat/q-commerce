@@ -35,7 +35,11 @@ export const createOrder = (order) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post("/api/v1/order/create", order, config);
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/v1/order/create`,
+      order,
+      config
+    );
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (err) {
@@ -48,7 +52,9 @@ export const myOrdersAction = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
 
-    const { data } = await axios.get("/api/v1/orders/user");
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/orders/user`
+    );
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data });
   } catch (err) {
@@ -61,7 +67,9 @@ export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/orders");
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/orders`
+    );
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (err) {
@@ -78,7 +86,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `/api/v1/admin/order/${id}`,
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/order/${id}`,
       order,
       config
     );
@@ -94,7 +102,9 @@ export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
+    const { data } = await axios.delete(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/order/${id}`
+    );
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data });
   } catch (err) {
@@ -107,7 +117,9 @@ export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/order/${id}`);
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/order/${id}`
+    );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (err) {

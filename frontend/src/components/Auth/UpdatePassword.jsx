@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { PasswordLock } from "../../assets/svg";
 import { Loading, MetaData } from "../../helper";
 import {
-  clearErrors,
-  updatePassword,
-  UPDATE_PASSWORD_RESET,
+    clearErrors,
+    UPDATE_PASSWORD_RESET,
+    updatePassword,
 } from "../../redux/actions/userAction";
 import { Container, Input, Label } from "../Common";
 
@@ -50,7 +50,7 @@ export default function UpdatePassword() {
   return (
     <Container>
       <div className="mx-auto mt-16 mb-6 sm:w-10/12 md:my-20 md:w-8/12 lg:w-6/12 xl:w-5/12">
-        <MetaData title="Update Password | Q - Sneakers" />
+        <MetaData title="Update Password | Elite - Sneakers" />
         {loading && <Loading />}
         <form
           className="mt-8 rounded-md bg-white px-4 py-5 shadow sm:px-12 sm:py-14"

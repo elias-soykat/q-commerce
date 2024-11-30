@@ -36,8 +36,8 @@ export const getProducts =
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
-      let link1 = `/api/v1/products?page=${pageNumber}&keyword=${keyword}`;
-      let link2 = `/api/v1/products?page=${pageNumber}&keyword=${keyword}&category=${category}`;
+      let link1 = `${import.meta.env.VITE_API_URL}/api/v1/products?page=${pageNumber}&keyword=${keyword}`;
+      let link2 = `${import.meta.env.VITE_API_URL}/api/v1/products?page=${pageNumber}&keyword=${keyword}&category=${category}`;
 
       let getLink = category ? link2 : link1;
 
@@ -45,7 +45,7 @@ export const getProducts =
 
       dispatch({ type: ALL_PRODUCT_SUCCESS, payload: data });
     } catch (err) {
-      dispatch({ type: ALL_PRODUCT_FAIL, payload: err.response.data });
+      dispatch({ type: ALL_PRODUCT_FAIL, payload: err?.response?.data });
     }
   };
 
@@ -57,7 +57,7 @@ export const createProduct = (productData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      "/api/v1/admin/product/create",
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/product/create`,
       productData,
       config
     );
@@ -76,7 +76,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `/api/v1/admin/product/update/${id}`,
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/product/update/${id}`,
       productData,
       config
     );
@@ -92,7 +92,9 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/product/${id}`
+    );
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (err) {
@@ -107,7 +109,11 @@ export const newReview = (reviewData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(
+      `${import.meta.env.VITE_API_URL}/api/v1/review`,
+      reviewData,
+      config
+    );
 
     dispatch({ type: NEW_REVIEW_SUCCESS, payload: data });
   } catch (err) {
@@ -120,7 +126,9 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/products");
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/products`
+    );
 
     dispatch({ type: ADMIN_PRODUCT_SUCCESS, payload: data });
   } catch (err) {
@@ -133,7 +141,9 @@ export const deleteSingleProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/product/delete/${id}`);
+    const { data } = await axios.delete(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/product/delete/${id}`
+    );
 
     dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: data });
   } catch (err) {

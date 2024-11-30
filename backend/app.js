@@ -1,5 +1,6 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
+const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 // Routes Import
 const product = require("./routes/productRoute");

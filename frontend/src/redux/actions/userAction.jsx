@@ -60,7 +60,7 @@ export const loginAction = (email, password) => async (dispatch, getState) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      `/api/v1/login`,
+      `${import.meta.env.VITE_API_URL}/api/v1/login`,
       { email, password },
       config
     );
@@ -79,7 +79,11 @@ export const registerAction = (userData) => async (dispatch) => {
     dispatch({ type: REGISTER_REQUEST });
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    const { data } = await axios.post(`/api/v1/register`, userData, config);
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/v1/register`,
+      userData,
+      config
+    );
 
     dispatch({ type: REGISTER_SUCCESS, payload: data.user });
   } catch (err) {
@@ -92,7 +96,9 @@ export const loadUserAction = () => async (dispatch, getState) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get("/api/v1/user");
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/user`
+    );
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
 
@@ -105,7 +111,7 @@ export const loadUserAction = () => async (dispatch, getState) => {
 // Logout User
 export const logoutUser = () => async (dispatch) => {
   try {
-    await axios.get("/api/v1/logout");
+    await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS, payload: true });
 
@@ -121,7 +127,11 @@ export const updateProfile = (userData) => async (dispatch) => {
     dispatch({ type: UPDATE_PROFILE_REQUEST });
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    const { data } = await axios.put(`/api/v1/user/update`, userData, config);
+    const { data } = await axios.put(
+      `${import.meta.env.VITE_API_URL}/api/v1/user/update`,
+      userData,
+      config
+    );
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
   } catch (err) {
@@ -136,7 +146,7 @@ export const updatePassword = (password) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.put(
-      `/api/v1/password/update`,
+      `${import.meta.env.VITE_API_URL}/api/v1/password/update`,
       password,
       config
     );
@@ -153,7 +163,11 @@ export const forgetPassword = (email) => async (dispatch) => {
     dispatch({ type: FORGET_PASSWORD_REQUEST });
 
     const config = { headers: { "Content-Type": "application/json" } };
-    const { data } = await axios.post(`/api/v1/password/forget`, email, config);
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/v1/password/forget`,
+      email,
+      config
+    );
 
     dispatch({ type: FORGET_PASSWORD_SUCCESS, payload: data.message });
   } catch (err) {
@@ -168,7 +182,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.put(
-      `/api/v1/password/reset/${token}`,
+      `${import.meta.env.VITE_API_URL}/api/v1/password/reset/${token}`,
       passwords,
       config
     );
@@ -184,7 +198,9 @@ export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/admin/users`);
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/users`
+    );
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data });
   } catch (err) {
@@ -197,7 +213,9 @@ export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/admin/user/${id}`);
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/user/${id}`
+    );
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
   } catch (err) {
@@ -212,7 +230,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.put(
-      `/api/v1/admin/user/${id}`,
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/user/${id}`,
       userData,
       config
     );
@@ -228,7 +246,9 @@ export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/user/${id}`);
+    const { data } = await axios.delete(
+      `${import.meta.env.VITE_API_URL}/api/v1/admin/user/${id}`
+    );
 
     dispatch({ type: DELETE_USER_SUCCESS, payload: data });
   } catch (err) {

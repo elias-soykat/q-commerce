@@ -47,7 +47,7 @@ export default function Login() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <MetaData title="Login | Q - Sneakers" />
+      <MetaData title="Login | Elite - Sneakers" />
       {loading && <Loading />}
       <div className="flex w-full max-w-lg flex-col rounded-md bg-white px-6 py-8 shadow-md md:px-12 md:py-12 lg:px-14 lg:py-14">
         <button className="my-8 flex items-center justify-center  rounded bg-gray-100 py-3">

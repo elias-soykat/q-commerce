@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  CountryIcon,
-  HomeIcon,
-  PhoneIcon,
-  PinCodeIcon,
-  PostCode,
+    CountryIcon,
+    HomeIcon,
+    PhoneIcon,
+    PinCodeIcon,
+    PostCode,
 } from "../../assets/svg";
 import { MetaData } from "../../helper";
 import { saveShippingInfo } from "../../redux/actions/cartAction";
@@ -43,7 +43,7 @@ export default function Shipping() {
   return (
     <Container>
       <div className="my-10 sm:my-12">
-        <MetaData title="Shipping Details | Q - Sneakers" />
+        <MetaData title="Shipping Details | Elite - Sneakers" />
 
         <CheckoutSteps step={1} />
         <form

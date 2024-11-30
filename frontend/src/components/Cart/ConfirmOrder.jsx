@@ -35,7 +35,7 @@ export default function ConfirmOrder() {
   };
   return (
     <Container>
-      <MetaData title="Confirm Order | Q - Sneakers" />
+      <MetaData title="Confirm Order | Elite - Sneakers" />
       {/* className="container mt-28 sm:mt-40" */}
       <CheckoutSteps step={2} />
 

@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CreditCard } from "../../assets/svg";
 import { MetaData } from "../../helper";
-import { clearCart, clearErrors, createOrder } from "../../redux/actions/orderAction";
+import {
+    clearCart,
+    clearErrors,
+    createOrder,
+} from "../../redux/actions/orderAction";
 import { Container } from "../Common";
 import { CheckoutSteps } from "../Utils";
 
@@ -44,16 +48,15 @@ export default function Payment() {
       const config = { headers: { "Content-Type": "application/json" } };
 
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${import.meta.env.VITE_API_URL}/api/v1/payment/process`,
         paymentData,
         config
       );
 
-
       const client_secret = data.client_secret;
 
-      if(client_secret) {
-        dispatch(clearCart())
+      if (client_secret) {
+        dispatch(clearCart());
       }
 
       if (!stripe || !elements) return;
@@ -107,7 +110,7 @@ export default function Payment() {
 
   return (
     <Container>
-      <MetaData title="Payment | Q-Sneakers" />
+      <MetaData title="Payment | elite-sneakers" />
       <CheckoutSteps step={3} />
 
       <div className="min-w-screen flex items-center justify-center pb-24 pt-6 sm:pt-8">

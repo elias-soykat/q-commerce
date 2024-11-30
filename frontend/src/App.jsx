@@ -37,7 +37,9 @@ export default function App() {
   const [stripeKey, setStripeKey] = useState();
 
   const getStripeApiKey = async () => {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/v1/stripeapikey`
+    );
     setStripeKey(data.stripeApiKey);
   };
 

@@ -13,7 +13,7 @@ export default function Home() {
   }, [dispatch]);
   return (
     <>
-      <MetaData title="Home | Q - Sneakers" />
+      <MetaData title="Home | Elite - Sneakers" />
       <Banner />
       <FreeDelivery />
       <Products />

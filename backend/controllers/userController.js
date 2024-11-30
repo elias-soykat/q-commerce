@@ -77,12 +77,12 @@ exports.forgetPassword = asyncHandler(async (req, res) => {
     "host"
   )}/password/reset/${resetPassword}`;
 
-  const message = `Hello, \n\n Follow this link to reset your Q-Sneakers password for your ${user.email} account. \n\n ${resetPasswordUrl} \n\nIf you didn’t ask to reset your password, you can ignore this email.\n\nThanks. \n\n Your Q-Sneakers Team`;
+  const message = `Hello, \n\n Follow this link to reset your elite-sneakers password for your ${user.email} account. \n\n ${resetPasswordUrl} \n\nIf you didn’t ask to reset your password, you can ignore this email.\n\nThanks. \n\n Your elite-sneakers Team`;
 
   try {
     await sendEmail({
       email: user.email,
-      subject: "Q-Sneakers Password Recovery",
+      subject: "elite-sneakers Password Recovery",
       message,
     });
 

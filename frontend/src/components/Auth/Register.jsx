@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import simpleAvatar from "../../assets/avatar.png";
 import {
-  EmailIcon,
-  GoogleIcon,
-  NameIcon,
-  PasswordLock,
+    EmailIcon,
+    GoogleIcon,
+    NameIcon,
+    PasswordLock,
 } from "../../assets/svg";
 import { Loading, MetaData } from "../../helper";
 import { registerAction } from "../../redux/actions/userAction";
@@ -68,7 +68,7 @@ export default function Register() {
 
   return (
     <div className="mt-16 flex min-h-screen items-center justify-center bg-gray-100 md:mt-20 xl:mt-10 2xl:mt-0">
-      <MetaData title="Register | Q - Sneakers" />
+      <MetaData title="Register | Elite - Sneakers" />
       {loading && <Loading />}
       <div className="flex w-full max-w-lg flex-col rounded-md bg-white px-6 py-6 shadow-md md:px-12 md:py-10 lg:px-14 lg:py-12">
         <button className="mb-2 flex items-center justify-center  rounded bg-gray-100 py-3">

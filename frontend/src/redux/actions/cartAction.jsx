@@ -10,7 +10,9 @@ export const CLEAR_CART_ITEM = "CLEAR_CART_ITEM";
 
 // Add to cart
 export const addItemsCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/v1/product/${id}`);
+  const { data } = await axios.get(
+    `${import.meta.env.VITE_API_URL}/api/v1/product/${id}`
+  );
 
   dispatch({
     type: ADD_TO_CART,
