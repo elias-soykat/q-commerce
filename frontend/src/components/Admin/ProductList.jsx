@@ -40,7 +40,7 @@ export default function ProductList() {
     dispatch(getAdminProducts());
   }, [dispatch, err, errDelete, isDelete]);
 
-  const checkProduct = products.length > 0;
+  const checkProduct = products?.length > 0;
 
   return (
     <section className="container my-20">

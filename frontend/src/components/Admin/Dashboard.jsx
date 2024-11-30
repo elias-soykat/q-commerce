@@ -39,7 +39,7 @@ export default function Dashboard() {
               to="/admin/products"
               className="m-2 flex h-32 w-32 items-center justify-center rounded-full border bg-teal-600 p-6 text-center font-medium text-white"
             >
-              Products {products.length || "00"}
+              Products {products?.length || "00"}
             </Link>
             <Link
               to="/admin/orders"

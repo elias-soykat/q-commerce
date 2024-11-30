@@ -11,7 +11,7 @@ export default function Products() {
 
   return (
     <Container bg="bg-white my-4">
-      {products.length === 0 ? (
+      {products?.length === 0 ? (
         <h1 className="text-center text-2xl font-bold">No products found</h1>
       ) : (
         <SectionHeader text="text-center">Featured Products</SectionHeader>
