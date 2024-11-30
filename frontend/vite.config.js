@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "dist", // This is the default output directory for Vite
+    outDir: "dist",
   },
+  base: "/",
 });
