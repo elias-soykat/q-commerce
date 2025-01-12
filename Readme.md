@@ -2,7 +2,7 @@
 
 Full-Stack Ecommerce with Admin Dashboard & Stripe Payment Gateway.
 
-[Visit Now](https://elite-sneakers.onrender.com/) 🚀
+[Visit Now](https://elite-sneaker.vercel.app) 🚀
 
 ## 🖥️ Tech Stack
 
